@@ -1,0 +1,542 @@
+package com.espboorg.competitive.codesignal;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class CodingPracticeTest {
+    CodingPractice codingPractice;
+
+    @BeforeEach
+    void setUp() {
+        codingPractice = new CodingPractice();
+    }
+
+    @AfterEach
+    void tearDown() {
+        codingPractice = null;
+    }
+
+    @Test
+    void testAreCoprime() {
+        assertTrue(codingPractice.areCoprime(1, 1));
+        assertTrue(codingPractice.areCoprime(8, 25));
+        assertTrue(codingPractice.areCoprime(15, 28));
+        assertFalse(codingPractice.areCoprime(12, 18));
+        assertFalse(codingPractice.areCoprime(14, 49));
+        assertFalse(codingPractice.areCoprime(22, 77));
+        assertFalse(codingPractice.areCoprime(17, 51));
+        assertFalse(codingPractice.areCoprime(35, 49));
+        assertTrue(codingPractice.areCoprime(2167, 2183));
+    }
+
+    @Test
+    void testNthPrime() {
+        assertEquals(2, codingPractice.nthPrime(1));
+        assertEquals(3, codingPractice.nthPrime(2));
+        assertEquals(5, codingPractice.nthPrime(3));
+        assertEquals(7, codingPractice.nthPrime(4));
+        assertEquals(11, codingPractice.nthPrime(5));
+        assertEquals(13, codingPractice.nthPrime(6));
+        assertEquals(17, codingPractice.nthPrime(7));
+    }
+
+    @Test
+    void testIndexOfFirstOccurrence() {
+        List<Integer> integerList = Arrays.asList(1, 2, 3, 2, 4, 2, 7, 5, 5, 8, 4, 7, 6, 3, 9, 6);
+        assertEquals(0, codingPractice.indexOfFirstOccurrence(integerList, 1));
+        assertEquals(1, codingPractice.indexOfFirstOccurrence(integerList, 2));
+        assertEquals(2, codingPractice.indexOfFirstOccurrence(integerList, 3));
+        assertEquals(4, codingPractice.indexOfFirstOccurrence(integerList, 4));
+        assertEquals(7, codingPractice.indexOfFirstOccurrence(integerList, 5));
+        assertEquals(12, codingPractice.indexOfFirstOccurrence(integerList, 6));
+        assertEquals(6, codingPractice.indexOfFirstOccurrence(integerList, 7));
+        assertEquals(9, codingPractice.indexOfFirstOccurrence(integerList, 8));
+        assertEquals(14, codingPractice.indexOfFirstOccurrence(integerList, 9));
+        assertEquals(-1, codingPractice.indexOfFirstOccurrence(integerList, 10));
+        assertEquals(-1, codingPractice.indexOfFirstOccurrence(integerList, 63));
+    }
+
+    @Test
+    void testCountUniqueElements() {
+        assertEquals(3, codingPractice.countUniqueElements(Arrays.asList(1, 2, 3, 2, 4)));
+        assertEquals(6, codingPractice.countUniqueElements(Arrays.asList(11, 32, 83, 32, 44, 58, 61, 11, 32, 44, 31, 98, 94, 98, 65)));
+        assertEquals(0, codingPractice.countUniqueElements(Arrays.asList(-1000, -1000, -1000, 1000, 1000, 1000)));
+        assertEquals(0, codingPractice.countUniqueElements(Arrays.asList(1000, 1000, 1000, 1000, 1000, -1000, -1000, -1000)));
+    }
+
+    @Test
+    void testReverseList() {
+        var reversed = codingPractice.reverseList(Arrays.asList(1, 2, 3, 4, 5));
+        assertEquals(5, reversed.size());
+        assertEquals(5, reversed.getFirst());
+        assertEquals(3, reversed.get(reversed.size() / 2));
+        assertEquals(1, reversed.getLast());
+
+        reversed = codingPractice.reverseList(Arrays.asList(100, 25, 43, 20, 91, 101, 235, 364));
+        assertEquals(8, reversed.size());
+        assertEquals(364, reversed.getFirst());
+        assertEquals(20, reversed.get(reversed.size() / 2));
+        assertEquals(100, reversed.getLast());
+    }
+
+    @Test
+    void shiftListElements() {
+        var shiftedList = codingPractice.shiftListElements(Arrays.asList(1, 2, 3, 4, 5), 2);
+        assertEquals(5, shiftedList.size());
+        assertEquals(4, shiftedList.getFirst());
+        assertEquals(1, shiftedList.get(shiftedList.size() / 2));
+        assertEquals(3, shiftedList.getLast());
+
+        shiftedList = codingPractice.shiftListElements(Arrays.asList(1, 2, 3, 4, 5), -1);
+        assertEquals(5, shiftedList.size());
+        assertEquals(2, shiftedList.getFirst());
+        assertEquals(4, shiftedList.get(shiftedList.size() / 2));
+        assertEquals(1, shiftedList.getLast());
+
+        shiftedList = codingPractice.shiftListElements(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8), -8);
+        assertEquals(8, shiftedList.size());
+        assertEquals(1, shiftedList.getFirst());
+        assertEquals(5, shiftedList.get(shiftedList.size() / 2));
+        assertEquals(8, shiftedList.getLast());
+
+        shiftedList = codingPractice.shiftListElements(Arrays.asList(-1000, -999, -998, -997, -996), -1000);
+        assertEquals(5, shiftedList.size());
+        assertEquals(-1000, shiftedList.getFirst());
+        assertEquals(-998, shiftedList.get(shiftedList.size() / 2));
+        assertEquals(-996, shiftedList.getLast());
+
+        shiftedList = codingPractice.shiftListElements(Arrays.asList(1, 5, 10, 15, 20), 100);
+        assertEquals(5, shiftedList.size());
+        assertEquals(1, shiftedList.getFirst());
+        assertEquals(10, shiftedList.get(shiftedList.size() / 2));
+        assertEquals(20, shiftedList.getLast());
+
+        shiftedList = codingPractice.shiftListElements(Arrays.asList(1, 2, 3), -4);
+        assertEquals(3, shiftedList.size());
+        assertEquals(2, shiftedList.getFirst());
+        assertEquals(3, shiftedList.get(shiftedList.size() / 2));
+        assertEquals(1, shiftedList.getLast());
+    }
+
+    @Test
+    void testContiguousSubarray1() {
+        int[] listA = {1, 2, 2, 3, 2, 4, 5};
+        int[] listB = {2, 3, 3};
+        assertFalse(codingPractice.contiguousSubarray(listA, listB));
+    }
+
+    @Test
+    void testContiguousSubarray2() {
+        int[] listA = {-1, -2, -3, -4, -5};
+        int[] listB = {-3, -2, -4};
+        assertFalse(codingPractice.contiguousSubarray(listA, listB));
+    }
+
+    @Test
+    void testContiguousSubarray3() {
+        int[] listA = {1, 2, 3, 4, 5};
+        int[] listB = {2, 3, 4};
+        assertTrue(codingPractice.contiguousSubarray(listA, listB));
+    }
+
+    @Test
+    void testContiguousSubarray4() {
+        int[] listA = {1, -1, 3, -2, 3, 2, 5};
+        int[] listB = {3, 2};
+        assertTrue(codingPractice.contiguousSubarray(listA, listB));
+    }
+
+    @Test
+    void testContiguousSubarray5() {
+        int[] listA = {1, 2, 2, 3, 2, 4, 5};
+        int[] listB = {2, 2, 3};
+        assertTrue(codingPractice.contiguousSubarray(listA, listB));
+    }
+
+    @Test
+    void testContiguousSubarray6() {
+        int[] listA = {-5, 9, -5};
+        int[] listB = {-5};
+        assertTrue(codingPractice.contiguousSubarray(listA, listB));
+    }
+
+    @Test
+    void testContiguousSubarray7() {
+        int[] listA = {1, 2, 3, 4, 5};
+        int[] listB = {3, 4, 6};
+        assertFalse(codingPractice.contiguousSubarray(listA, listB));
+    }
+
+    @Test
+    void testContiguousSubarray8() {
+        int[] listA = {5, 4, 3, 2, 1};
+        int[] listB = {1, 3, 2};
+        assertFalse(codingPractice.contiguousSubarray(listA, listB));
+    }
+
+    @Test
+    void testContiguousSubarray9() {
+        int[] listA = {-5, 9, -5};
+        int[] listB = {5};
+        assertFalse(codingPractice.contiguousSubarray(listA, listB));
+    }
+
+    @Test
+    void testGenerateListFromNTo1_1() {
+        List<Integer> generatedListFromNTo1 = codingPractice.generateListFromNTo1(5);
+        assertEquals(5, generatedListFromNTo1.size());
+        assertEquals(5, generatedListFromNTo1.getFirst());
+        assertEquals(1, generatedListFromNTo1.getLast());
+    }
+
+    @Test
+    void testGenerateListFromNTo1_2() {
+        List<Integer> generatedListFromNTo1 = codingPractice.generateListFromNTo1(20);
+        assertEquals(20, generatedListFromNTo1.size());
+        assertEquals(20, generatedListFromNTo1.getFirst());
+        assertEquals(1, generatedListFromNTo1.getLast());
+    }
+
+    @Test
+    void testSumOfDigitsRaisedToPositions() {
+        assertEquals(36, codingPractice.sumOfDigitsRaisedToPositions(253));
+        assertEquals(78, codingPractice.sumOfDigitsRaisedToPositions(1429));
+        assertEquals(2437, codingPractice.sumOfDigitsRaisedToPositions(7253));
+    }
+
+    @Test
+    void testReverseString() {
+        assertEquals("olleh", codingPractice.reverseString("hello"));
+    }
+
+    @Test
+    void testFibonacci() {
+        assertEquals(2, codingPractice.fibonacci(3));
+        assertEquals(55, codingPractice.fibonacci(10));
+    }
+
+    @Test
+    void testIsToeplitzMatrix_1() {
+        int[][] matrix = {
+                {1, 4, 3},
+                {5, 1, 4},
+                {8, 5, 1}
+        };
+        assertTrue(codingPractice.isToeplitzMatrix(matrix));
+    }
+
+    @Test
+    void testIsToeplitzMatrix_2() {
+        int[][] matrix = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+        assertFalse(codingPractice.isToeplitzMatrix(matrix));
+    }
+
+    @Test
+    void testIsToeplitzMatrix_3() {
+        int[][] matrix = {
+                {1, 4, 3, 6},
+                {5, 1, 4, 3},
+                {8, 5, 1, 4},
+                {7, 8, 5, 1}
+        };
+        assertTrue(codingPractice.isToeplitzMatrix(matrix));
+    }
+
+    @Test
+    void testCountLessThan_1() {
+        int[][] matrix = {
+                {1, 2, 3, 4},
+                {2, 3, 4, 5},
+                {3, 4, 5, 6},
+                {4, 5, 6, 7}
+        };
+        assertEquals(10, codingPractice.countLessThan(matrix, 5));
+    }
+
+    @Test
+    void testCountLessThan_2() {
+        int[][] matrix = {
+                {1, 2, 4, 8, 16},
+                {2, 4, 8, 16, 32},
+                {4, 8, 16, 32, 64},
+                {8, 16, 32, 64, 128},
+                {16, 32, 64, 128, 256}
+        };
+        assertEquals(22, codingPractice.countLessThan(matrix, 100));
+    }
+
+    @Test
+    void testCountLessThan_3() {
+        int[][] matrix = {
+                {-10, -5, 0, 5},
+                {0, 5, 10, 15},
+                {10, 15, 20, 25},
+                {20, 25, 30, 35}
+        };
+        assertEquals(4, codingPractice.countLessThan(matrix, 5));
+    }
+
+    @Test
+    void testCountLessThan_4() {
+        int[][] matrix = {
+                {1000000, 1000000},
+                {1000000, 1000000}
+        };
+        assertEquals(0, codingPractice.countLessThan(matrix, 1000000));
+    }
+
+    @Test
+    void testCountLessThan_5() {
+        int[][] matrix = {
+                {1, 2, 3, 4},
+                {2, 3, 4, 5},
+                {3, 4, 5, 6},
+                {4, 5, 6, 7}
+        };
+        assertEquals(3, codingPractice.countLessThan(matrix, 3));
+    }
+
+    @Test
+    void testMinMaxInSecondaryDiagonal() {
+        int[][] grid = {
+                {9, 2, 3, 4},
+                {2, 3, 1, 5},
+                {3, 8, 5, 6},
+                {9, 5, 6, 7}
+        };
+        List<Integer> minMax = codingPractice.minMaxInSecondaryDiagonal(grid);
+        assertEquals(1, minMax.getFirst());
+        assertEquals(9, minMax.getLast());
+    }
+
+    @Test
+    void testFindRowWithTarget_1() {
+        int[][] grid = {
+                {1, 4, 7},
+                {14, 15, 16},
+                {22, 23, 24}
+        };
+        assertNull(codingPractice.findRowWithTarget(grid, 25));
+    }
+
+    @Test
+    void testFindRowWithTarget_2() {
+        int[][] grid = {
+                {1, 4, 7},
+                {2, 5, 8},
+                {3, 6, 9}
+        };
+        assertEquals(2, codingPractice.findRowWithTarget(grid, 9));
+    }
+
+    @Test
+    void testReverseArray() {
+        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] reversedArray = codingPractice.reverseArray(array);
+        assertEquals(9, reversedArray[0]);
+        assertEquals(8, reversedArray[1]);
+        assertEquals(2, reversedArray[7]);
+        assertEquals(1, reversedArray[8]);
+    }
+
+    @Test
+    void testAntiRotateArray() {
+        int[] array = {1, 2, 3, 4, 5, 6, 7};
+        codingPractice.antiRotateArray(array, 3);
+        assertEquals(4, array[0]);
+        assertEquals(5, array[1]);
+        assertEquals(6, array[2]);
+        assertEquals(7, array[3]);
+        assertEquals(1, array[4]);
+        assertEquals(2, array[5]);
+        assertEquals(3, array[6]);
+    }
+
+    @Test
+    void testShuffleArray_1() {
+        List<Integer> integerList = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8));
+        List<Integer> shuffledArray = codingPractice.shuffleArray(integerList, 3);
+        assertEquals(1, shuffledArray.getFirst());
+        assertEquals(2, shuffledArray.get(1));
+        assertEquals(4, shuffledArray.get(2));
+        assertEquals(5, shuffledArray.get(3));
+        assertEquals(7, shuffledArray.get(4));
+        assertEquals(8, shuffledArray.get(5));
+        assertEquals(3, shuffledArray.get(6));
+        assertEquals(6, shuffledArray.getLast());
+    }
+
+    @Test
+    void testShuffleArray_2() {
+        List<Integer> integerList = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8));
+        List<Integer> shuffledArray = codingPractice.shuffleArray(integerList, 1);
+        assertEquals(1, shuffledArray.getFirst());
+        assertEquals(2, shuffledArray.get(1));
+        assertEquals(3, shuffledArray.get(2));
+        assertEquals(4, shuffledArray.get(3));
+        assertEquals(5, shuffledArray.get(4));
+        assertEquals(6, shuffledArray.get(5));
+        assertEquals(7, shuffledArray.get(6));
+        assertEquals(8, shuffledArray.getLast());
+    }
+
+    @Test
+    void testShuffleArray_3() {
+        List<Integer> integerList = new ArrayList<>(List.of(766, 243, -12, 24, 0, 41));
+        List<Integer> shuffledArray = codingPractice.shuffleArray(integerList, 2);
+        assertEquals(766, shuffledArray.getFirst());
+        assertEquals(-12, shuffledArray.get(1));
+        assertEquals(0, shuffledArray.get(2));
+        assertEquals(243, shuffledArray.get(3));
+        assertEquals(24, shuffledArray.get(4));
+        assertEquals(41, shuffledArray.getLast());
+    }
+
+    @Test
+    void testShuffleArray_4() {
+        List<Integer> integerList = new ArrayList<>(List.of(100, 200, 300, 400, 500, 600, 700, 800, 900));
+        List<Integer> shuffledArray = codingPractice.shuffleArray(integerList, 9);
+        assertEquals(100, shuffledArray.getFirst());
+        assertEquals(200, shuffledArray.get(1));
+        assertEquals(300, shuffledArray.get(2));
+        assertEquals(400, shuffledArray.get(3));
+        assertEquals(500, shuffledArray.get(4));
+        assertEquals(600, shuffledArray.get(5));
+        assertEquals(700, shuffledArray.get(6));
+        assertEquals(800, shuffledArray.get(7));
+        assertEquals(900, shuffledArray.getLast());
+    }
+
+    @Test
+    void testReverseArrayInChunks_1() {
+        int[] array = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] reversed = codingPractice.reverseArrayInGroups(array, 3);
+        assertEquals(3, reversed[0]);
+        assertEquals(2, reversed[1]);
+        assertEquals(1, reversed[2]);
+        assertEquals(6, reversed[3]);
+        assertEquals(5, reversed[4]);
+        assertEquals(4, reversed[5]);
+        assertEquals(9, reversed[6]);
+        assertEquals(8, reversed[7]);
+        assertEquals(7, reversed[8]);
+    }
+
+    @Test
+    void testReverseArrayInChunks_2() {
+        int[] array = new int[]{2, 3};
+        int[] reversed = codingPractice.reverseArrayInGroups(array, 2);
+        assertEquals(3, reversed[0]);
+        assertEquals(2, reversed[1]);
+    }
+
+    @Test
+    void testReverseArrayInChunks_3() {
+        int[] array = new int[]{10, 20, 30, 40, 50, 60, 70};
+        int[] reversed = codingPractice.reverseArrayInGroups(array, 5);
+        assertEquals(50, reversed[0]);
+        assertEquals(40, reversed[1]);
+        assertEquals(30, reversed[2]);
+        assertEquals(20, reversed[3]);
+        assertEquals(10, reversed[4]);
+        assertEquals(70, reversed[5]);
+        assertEquals(60, reversed[6]);
+    }
+
+    @Test
+    @DisplayName("Example Test Case: n = 8 (Divisible by 4)")
+    void testRearrangeArray_StandardDivisibleByFour() {
+        int[] input = {1, 2, 3, 4, 5, 6, 7, 8};
+        int[] expected = {3, 4, 5, 6, 1, 2, 7, 8};
+
+        codingPractice.rearrangeArray(input);
+
+        assertArrayEquals(expected, input, "Array should match [Q2, Q3, Q1, Q4]");
+    }
+
+    @Test
+    @DisplayName("Minimum Divisible Length: n = 4")
+    void testMinimumDivisibleLength() {
+        int[] input = {10, 20, 30, 40};
+        int[] expected = {20, 30, 10, 40};
+
+        codingPractice.rearrangeArray(input);
+
+        assertArrayEquals(expected, input);
+    }
+
+    @ParameterizedTest(name = "Non-divisible length n = {0}")
+    @MethodSource("provideNonDivisibleCases")
+    @DisplayName("Test Array Lengths Not Divisible By 4")
+    void testNonDivisibleLengths(int n, int[] input, int[] expected) {
+        codingPractice.rearrangeArray(input);
+        assertArrayEquals(expected, input);
+    }
+
+    private static Stream<Arguments> provideNonDivisibleCases() {
+        return Stream.of(
+                // n = 5 (remainder 1): Q1 = 1, Q4 = 1, Middle = 3
+                Arguments.of(5, new int[]{1, 2, 3, 4, 5}, new int[]{2, 3, 4, 1, 5}),
+
+                // n = 6 (remainder 2): Q1 = 1, Q4 = 1, Middle = 4
+                Arguments.of(6, new int[]{1, 2, 3, 4, 5, 6}, new int[]{2, 3, 4, 5, 1, 6}),
+
+                // n = 7 (remainder 3): Q1 = 1, Q4 = 1, Middle = 5
+                Arguments.of(7, new int[]{1, 2, 3, 4, 5, 6, 7}, new int[]{2, 3, 4, 5, 6, 1, 7}),
+
+                // n = 9 (remainder 1): Q1 = 2, Q4 = 2, Middle = 5
+                Arguments.of(9, new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9}, new int[]{3, 4, 5, 6, 7, 1, 2, 8, 9})
+        );
+    }
+
+    @Test
+    @DisplayName("Boundary Case: Lengths Less Than 4 Should Remain Unchanged")
+    void testBoundaryCasesLessThanFour() {
+        // n = 0
+        int[] empty = {};
+        codingPractice.rearrangeArray(empty);
+        assertArrayEquals(new int[]{}, empty);
+
+        // n = 1
+        int[] single = {42};
+        codingPractice.rearrangeArray(single);
+        assertArrayEquals(new int[]{42}, single);
+
+        // n = 2
+        int[] pair = {1, 2};
+        codingPractice.rearrangeArray(pair);
+        assertArrayEquals(new int[]{1, 2}, pair);
+
+        // n = 3
+        int[] trio = {1, 2, 3};
+        codingPractice.rearrangeArray(trio);
+        assertArrayEquals(new int[]{1, 2, 3}, trio);
+    }
+
+    @Test
+    @DisplayName("Handling Negative and Duplicate Numbers")
+    void testNegativeAndDuplicateNumbers() {
+        int[] input = {-5, 0, -5, 10, 20, 30, -5, 100};
+        int[] expected = {-5, 10, 20, 30, -5, 0, -5, 100};
+
+        codingPractice.rearrangeArray(input);
+
+        assertArrayEquals(expected, input);
+    }
+}
