@@ -539,4 +539,114 @@ class CodingPracticeTest {
 
         assertArrayEquals(expected, input);
     }
+
+    @Test
+    public void testCommonCharsInOrder() {
+        assertEquals("abcd", codingPractice.commonCharsInOrder("abcd", "dcba"));
+        assertEquals("ape", codingPractice.commonCharsInOrder("apple", "peach"));
+        assertEquals("abc", codingPractice.commonCharsInOrder("aabbcc", "abc"));
+        assertEquals("aaaa", codingPractice.commonCharsInOrder("aaaa", "aaaa"));
+        assertEquals("abcdef", codingPractice.commonCharsInOrder("abcdef", "fedcba"));
+        assertEquals("abcd", codingPractice.commonCharsInOrder("aabbccdd", "bcda"));
+        assertEquals("python", codingPractice.commonCharsInOrder("python", "thonpy"));
+        assertEquals("iervew", codingPractice.commonCharsInOrder("interview", "review"));
+        assertEquals("", codingPractice.commonCharsInOrder("aaaaa", "b"));
+        assertEquals("", codingPractice.commonCharsInOrder("abc", "def"));
+    }
+
+    @Test
+    public void testLongestCommonSuffix() {
+        assertEquals("arking", codingPractice.longestCommonSuffix(new String[]{"barking", "parking", "starking"}));
+        assertEquals("ower", codingPractice.longestCommonSuffix(new String[]{"flower", "tower", "power"}));
+        assertEquals("a", codingPractice.longestCommonSuffix(new String[]{"alpha", "beta", "gamma"}));
+        assertEquals("acer", codingPractice.longestCommonSuffix(new String[]{"racer", "placer", "effacer"}));
+        assertEquals("ello", codingPractice.longestCommonSuffix(new String[]{"hello", "jello"}));
+        assertEquals("word", codingPractice.longestCommonSuffix(new String[]{"word"}));
+        assertEquals("apple", codingPractice.longestCommonSuffix(new String[]{"apple", "grapple", "pineapple"}));
+        assertEquals("a", codingPractice.longestCommonSuffix(new String[]{"a", "aa", "aaa"}));
+        assertEquals("", codingPractice.longestCommonSuffix(new String[]{"ab", "abc", "abcd"}));
+        assertEquals("", codingPractice.longestCommonSuffix(new String[]{}));
+        assertEquals("duction", codingPractice.longestCommonSuffix(new String[]{"introduction", "reduction", "production", "seduction"}));
+        assertEquals("ation", codingPractice.longestCommonSuffix(new String[]{"communication", "station", "vacation", "nation"}));
+        assertEquals("oon", codingPractice.longestCommonSuffix(new String[]{"spoon", "moon", "balloon", "cartoon", "raccoon"}));
+        assertEquals("dabra", codingPractice.longestCommonSuffix(new String[]{"abracadabra", "dabra", "califragilisticexpialidociousdabra"}));
+        assertEquals("mation", codingPractice.longestCommonSuffix(new String[]{"transformation", "information", "formation", "automation"}));
+        assertEquals("eater", codingPractice.longestCommonSuffix(new String[]{"repeater", "defeater", "heater", "seater", "eater"}));
+        assertEquals("ility", codingPractice.longestCommonSuffix(new String[]{"intelligibility", "responsibility", "agility", "ability"}));
+        assertEquals("ization", codingPractice.longestCommonSuffix(new String[]{"synchronization", "organization", "localization", "realization"}));
+        assertEquals("plication", codingPractice.longestCommonSuffix(new String[]{"complication", "application", "implication", "replication", "duplication"}));
+        assertEquals("anding", codingPractice.longestCommonSuffix(new String[]{"understanding", "withstanding", "demanding", "commanding", "handing"}));
+    }
+
+    @Test
+    public void testRepeatSubstring() {
+        assertEquals("ab", codingPractice.repeatSubstring("ababab"));
+        assertEquals("", codingPractice.repeatSubstring("abcab"));
+        assertEquals("", codingPractice.repeatSubstring("abcab"));
+        assertEquals("", codingPractice.repeatSubstring("abcabcab"));
+        assertEquals("", codingPractice.repeatSubstring("abcabcabd"));
+        assertEquals("zz", codingPractice.repeatSubstring("zzzz"));
+        assertEquals("", codingPractice.repeatSubstring("#$#$$$#$#"));
+        assertEquals("Python", codingPractice.repeatSubstring("PythonPythonPython"));
+        assertEquals("", codingPractice.repeatSubstring("0"));
+        assertEquals("", codingPractice.repeatSubstring("10011001100110011"));
+        assertEquals("qwerty", codingPractice.repeatSubstring("qwertyqwertyqwerty"));
+        assertEquals("aaaaa", codingPractice.repeatSubstring("aaaaaaaaaa"));
+        assertEquals("", codingPractice.repeatSubstring("abababcbcbcbc"));
+        assertEquals("abab", codingPractice.repeatSubstring("abababab"));
+        assertEquals("11111", codingPractice.repeatSubstring("1111111111"));
+        assertEquals("xyzxyzxyz", codingPractice.repeatSubstring("xyzxyzxyzxyzxyzxyz"));
+        assertEquals("a".repeat(5000), codingPractice.repeatSubstring("a".repeat(10000)));
+        assertEquals("bmbmbmbmbmbmbmbmbmbmb", codingPractice.repeatSubstring("bmbmbmbmbmbmbmbmbmbmbbmbmbmbmbmbmbmbmbmbmb"));
+        assertEquals("lololo", codingPractice.repeatSubstring("lololololololololo"));
+        assertEquals("abcdefghij", codingPractice.repeatSubstring("abcdefghijabcdefghijabcdefghij"));
+        assertEquals("", codingPractice.repeatSubstring("y".repeat(999) + "z"));
+        assertEquals("tut", codingPractice.repeatSubstring("tuttuttuttuttut"));
+    }
+
+    @Test
+    public void testEfficient_LCP() {
+        assertEquals("fl", codingPractice.efficient_LCP(new String[]{"floss", "flight", "floral"}));
+        assertEquals("acorns", codingPractice.efficient_LCP(new String[]{"acorns", "acornsa", "acornsac", "acornsab"}));
+        assertEquals("abcd", codingPractice.efficient_LCP(new String[]{"abcd", "abcd", "abcd", "abcd"}));
+        assertEquals("a", codingPractice.efficient_LCP(new String[]{"abc", "a", "abcd"}));
+        assertEquals("abcd", codingPractice.efficient_LCP(new String[]{"abcde", "abcdf"}));
+        assertEquals("", codingPractice.efficient_LCP(new String[]{"tree", "treat", "break"}));
+        assertEquals("", codingPractice.efficient_LCP(new String[]{"abcd", "efgh", "ijkl"}));
+        assertEquals("appl", codingPractice.efficient_LCP(new String[]{"apple", "applied", "apply"}));
+        assertEquals("appl", codingPractice.efficient_LCP(new String[]{"apply", "applan", "applet"}));
+        assertEquals("", codingPractice.efficient_LCP(new String[]{"python", "java", "javascript"}));
+        assertEquals("anim", codingPractice.efficient_LCP(new String[]{"animal", "animosity", "animate"}));
+        assertEquals("so", codingPractice.efficient_LCP(new String[]{"song", "soprano", "sonar"}));
+        assertEquals("cru", codingPractice.efficient_LCP(new String[]{"crumble", "crunched", "crust"}));
+        assertEquals("", codingPractice.efficient_LCP(new String[]{"spring", "summer", "fall"}));
+        assertEquals("", codingPractice.efficient_LCP(new String[]{"", "abcd", "wxyz"}));
+        assertEquals("r", codingPractice.efficient_LCP(new String[]{"rotate", "rated", "rater"}));
+        assertEquals("tas", codingPractice.efficient_LCP(new String[]{"tasmania", "task", "tassel"}));
+        assertEquals("rock", codingPractice.efficient_LCP(new String[]{"rock", "rocket", "rocky"}));
+        assertEquals("inv", codingPractice.efficient_LCP(new String[]{"invitation", "invigorating", "invalid"}));
+        assertEquals("inter", codingPractice.efficient_LCP(new String[]{"intermingle", "intercept", "interchange"}));
+    }
+
+    @Test
+    public void testFindMostCommonSubstring() {
+        long currentTimeMillis = System.currentTimeMillis();
+        assertEquals("anaba", codingPractice.findMostCommonSubstring("bananabananaba", 5));
+        assertEquals(".aa", codingPractice.findMostCommonSubstring("a.b.aa.ab.", 3));
+        assertEquals("ab", codingPractice.findMostCommonSubstring("abcabcabc", 2));
+        assertEquals("r", codingPractice.findMostCommonSubstring("zyxwvutsr", 1));
+        assertEquals("demiol", codingPractice.findMostCommonSubstring("epidemiology", 6));
+        assertEquals("abcd", codingPractice.findMostCommonSubstring("abcdabcdabcdabcdabcd", 4));
+        assertEquals("lol", codingPractice.findMostCommonSubstring("lololololo", 3));
+        assertEquals("a", codingPractice.findMostCommonSubstring("a", 1));
+        assertEquals("a", codingPractice.findMostCommonSubstring("aa", 1));
+        assertEquals("a", codingPractice.findMostCommonSubstring("abcdefgh", 1));
+        assertEquals("abcdefgh", codingPractice.findMostCommonSubstring("abcdefgh", 8));
+        assertEquals("xy", codingPractice.findMostCommonSubstring("xyzzyx", 2));
+        assertEquals("abcd", codingPractice.findMostCommonSubstring("abcd", 4));
+        assertEquals("a", codingPractice.findMostCommonSubstring("aaa", 1));
+        assertEquals("ace", codingPractice.findMostCommonSubstring("racecar", 3));
+        assertEquals("aaa", codingPractice.findMostCommonSubstring("aaabbb", 3));
+        System.out.println("Execution time: " + (System.currentTimeMillis() - currentTimeMillis));
+    }
 }

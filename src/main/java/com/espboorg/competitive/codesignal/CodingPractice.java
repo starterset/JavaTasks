@@ -561,4 +561,150 @@ public class CodingPractice {
         // Step 3: Reverse the Q1 portion back to original order
         reverseArray(nums, middleEnd - quarter + 1, middleEnd);
     }
+
+    /**
+     * Determine a new string, string3, that is formed by characters
+     * that occur in both string1 and string2 in the same order as they occur in string1.
+     * Algorithm should not exceed a time complexity of O(n + m)
+     *
+     * @param string1 String
+     * @param string2 String
+     * @return String containing common occurring characters
+     */
+    public String commonCharsInOrder(String string1, String string2) {
+        int[] count = new int[256];
+        for (int i = 0; i < string2.length(); i++) {
+            char c = string2.charAt(i);
+            count[c]++;
+        }
+
+        StringBuilder string3 = new StringBuilder();
+        for (int i = 0; i < string1.length(); i++) {
+            char c = string1.charAt(i);
+            if (count[c] > 0) {
+                string3.append(c);
+                count[c]--;
+            }
+        }
+        return string3.toString();
+    }
+
+    /**
+     * Find the longest common suffix shared among all strings in the array.
+     *
+     * @param words array of strings
+     * @return common suffix, or an empty string If the given array is empty or there is no common suffix
+     */
+    public String longestCommonSuffix(String[] words) {
+        if (words == null || words.length == 0) {
+            return "";
+        }
+
+        String shortest = words[0];
+        for (String s : words) {
+            if (s.length() < shortest.length()) {
+                shortest = s;
+            }
+        }
+
+        for (int i = 0; i < shortest.length(); i++) {
+            for (String str : words) {
+                char charToCheck = shortest.charAt(shortest.length() - 1 - i);
+                if (str.charAt(str.length() - 1 - i) != charToCheck) {
+                    return shortest.substring(shortest.length() - i);
+                }
+            }
+        }
+        return shortest;
+    }
+
+    /**
+     * Checks whether the string s consists of one repeated substring
+     *
+     * @param s string
+     * @return the longest repeating substring
+     */
+    public String repeatSubstring(String s) {
+        if (s == null || s.length() < 2) {
+            return "";
+        }
+
+        int length = s.length();
+        for (int i = length / 2; i > 0; i--) {
+            if (length % i == 0) {
+                String pattern = s.substring(0, i);
+                if (pattern.repeat(length / i).equals(s)) {
+                    return pattern;
+                }
+            }
+        }
+        return "";
+    }
+
+    /**
+     * Find the longest common prefix in the given array of strings
+     *
+     * @param words array of strings
+     * @return longest common prefix
+     */
+    public String efficient_LCP(String[] words) {
+        if (words.length == 0) return "";
+
+        Arrays.sort(words);
+
+        String first = words[0];
+        String last = words[words.length - 1];
+
+        int i = 0;
+        int maxIndex = Math.min(first.length(), last.length());
+
+        while (i < maxIndex && first.charAt(i) == last.charAt(i)) {
+            i++;
+        }
+
+        return first.substring(0, i);
+    }
+
+    /**
+     * Finds and returns the most common substring of a given length in the input string.
+     * If two or more substrings have the same maximum frequency, returns the lexicographically smallest one.
+     *
+     * @param s      input string
+     * @param length substring length
+     * @return most common substring
+     */
+    public String findMostCommonSubstring(String s, int length) {
+        if (s == null || length <= 0 || length > s.length()) {
+            return "";
+        }
+        if (s.length() == length) {
+            return s;
+        }
+
+        Map<String, Integer> frequencyMap = new HashMap<>();
+
+        for (int i = 0; i + length <= s.length(); i++) {
+            String pattern = s.substring(i, i + length);
+            frequencyMap.merge(pattern, 1, Integer::sum);
+        }
+
+        return retrieveMostCommonSubstring(frequencyMap);
+    }
+
+    private String retrieveMostCommonSubstring(Map<String, Integer> frequencyMap) {
+        int maxFrequency = 0;
+        String mostCommonSubstring = "";
+        for (Map.Entry<String, Integer> entry : frequencyMap.entrySet()) {
+            int frequency = entry.getValue();
+            String key = entry.getKey();
+
+            if (entry.getValue() > maxFrequency) {
+                maxFrequency = frequency;
+                mostCommonSubstring = key;
+            } else if (maxFrequency == frequency && key.compareTo(mostCommonSubstring) < 0) {
+                mostCommonSubstring = key;
+            }
+        }
+        return mostCommonSubstring;
+    }
 }
