@@ -562,6 +562,9 @@ public class CodingPractice {
         reverseArray(nums, middleEnd - quarter + 1, middleEnd);
     }
 
+
+    // Introduction to String Manipulation in Java
+
     /**
      * Determine a new string, string3, that is formed by characters
      * that occur in both string1 and string2 in the same order as they occur in string1.
@@ -706,5 +709,160 @@ public class CodingPractice {
             }
         }
         return mostCommonSubstring;
+    }
+
+
+    // Advanced ArrayList Manipulation in Java
+
+    /**
+     * Return a new list that results from merging the two input lists
+     * so that the final output list is also in non-decreasing order.
+     * It should contain all the elements of the two lists, maintaining their order within the lists.
+     *
+     * @param list1 input list
+     * @param list2 input list
+     * @return merged list
+     */
+    public List<Integer> mergeSortedLists(List<Integer> list1, List<Integer> list2) {
+        List<Integer> mergedList = new ArrayList<>(list1.size() + list2.size());
+
+        int i = 0;
+        int j = 0;
+
+        while (i < list1.size() && j < list2.size()) {
+            if (list1.get(i) <= list2.get(j)) {
+                mergedList.add(list1.get(i));
+                i++;
+            } else {
+                mergedList.add(list2.get(j));
+                j++;
+            }
+        }
+
+        while (i < list1.size()) {
+            mergedList.add(list1.get(i));
+            i++;
+        }
+
+        while (j < list2.size()) {
+            mergedList.add(list2.get(j));
+            j++;
+        }
+
+        return mergedList;
+    }
+
+    /**
+     * Merges two lists into a new list such that the resulting list is sorted in descending order.
+     * Duplicate elements in the two lists are merged into one element in the final list.
+     *
+     * @param list1 sorted list in ascending order
+     * @param list2 sorted list in ascending order
+     * @return merged list
+     */
+    public List<Integer> mergeSortedListsDescendingUnique(List<Integer> list1, List<Integer> list2) {
+        List<Integer> mergedList = new ArrayList<>(list1.size() + list2.size());
+
+        int i = list1.size() - 1;
+        int j = list2.size() - 1;
+
+        while (i >= 0 && j >= 0) {
+            if (list1.get(i) > list2.get(j)) {
+                mergedList.add(list1.get(i));
+                i--;
+            } else if (list1.get(i) < list2.get(j)) {
+                mergedList.add(list2.get(j));
+                j--;
+            } else {
+                mergedList.add(list1.get(i));
+                i--;
+                j--;
+            }
+        }
+
+        while (i >= 0) {
+            mergedList.add(list1.get(i));
+            i--;
+        }
+
+        while (j >= 0) {
+            mergedList.add(list2.get(j));
+            j--;
+        }
+
+        return mergedList;
+    }
+
+    /**
+     * Returns a new sorted list with elements that are unique between list1 and list2
+     *
+     * @param list1 sorted list in ascending order
+     * @param list2 sorted list in ascending order
+     * @return merged list
+     */
+    public List<Integer> removeCommonElements(List<Integer> list1, List<Integer> list2) {
+        List<Integer> mergedList = new ArrayList<>(list1.size() + list2.size());
+
+        int i = 0;
+        int j = 0;
+
+        while (i < list1.size() && j < list2.size()) {
+            if (list1.get(i) < list2.get(j)) {
+                mergedList.add(list1.get(i));
+                i++;
+            } else if (list1.get(i) > list2.get(j)) {
+                mergedList.add(list2.get(j));
+                j++;
+            } else {
+                i++;
+                j++;
+            }
+        }
+
+        while (i < list1.size()) {
+            mergedList.add(list1.get(i));
+            i++;
+        }
+
+        while (j < list2.size()) {
+            mergedList.add(list2.get(j));
+            j++;
+        }
+
+        return mergedList;
+    }
+
+    /**
+     * Merges multiple individually sorted lists into a single, fully sorted list.
+     * <p>
+     * Accommodates incoming batch data where elements are sorted within each list
+     * but not across different lists, combining all elements into a unified ascending order.
+     * </p>
+     *
+     * @param lists the {@code List} of sorted lists to merge
+     * @return a single {@code List} containing all elements from every input list in ascending order
+     * @implNote Expected time complexity is {@code O(n * m)}, where {@code n} is the total number
+     * of lists and {@code m} is the maximum length of any individual list.
+     */
+    public List<Integer> mergeNSortedLists(List<List<Integer>> lists) {
+        if (lists == null || lists.isEmpty()) {
+            return new ArrayList<>();
+        }
+
+        while (lists.size() > 1) {
+            // Pre-allocate capacity for half the remaining lists
+            List<List<Integer>> tempLists = new ArrayList<>(lists.size() / 2 + 1);
+
+            for (int i = 0; i < lists.size(); i += 2) {
+                if (i + 1 < lists.size()) {
+                    tempLists.add(mergeSortedLists(lists.get(i), lists.get(i + 1)));
+                } else {
+                    // Carry over leftover list when lists.size() is odd
+                    tempLists.add(lists.get(i));
+                }
+            }
+            lists = tempLists;
+        }
+        return lists.getFirst();
     }
 }

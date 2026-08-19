@@ -630,7 +630,6 @@ class CodingPracticeTest {
 
     @Test
     public void testFindMostCommonSubstring() {
-        long currentTimeMillis = System.currentTimeMillis();
         assertEquals("anaba", codingPractice.findMostCommonSubstring("bananabananaba", 5));
         assertEquals(".aa", codingPractice.findMostCommonSubstring("a.b.aa.ab.", 3));
         assertEquals("ab", codingPractice.findMostCommonSubstring("abcabcabc", 2));
@@ -647,6 +646,63 @@ class CodingPracticeTest {
         assertEquals("a", codingPractice.findMostCommonSubstring("aaa", 1));
         assertEquals("ace", codingPractice.findMostCommonSubstring("racecar", 3));
         assertEquals("aaa", codingPractice.findMostCommonSubstring("aaabbb", 3));
-        System.out.println("Execution time: " + (System.currentTimeMillis() - currentTimeMillis));
+    }
+
+    @Test
+    public void testMergeSortedLists_1() {
+        List<Integer> l1 = Arrays.asList(1, 3, 5, 7, 9);
+        List<Integer> l2 = Arrays.asList(2, 2, 3, 4, 6, 6);
+        List<Integer> expected = Arrays.asList(1, 2, 2, 3, 3, 4, 5, 6, 6, 7, 9);
+        assertEquals(expected, codingPractice.mergeSortedLists(l1, l2));
+    }
+
+    @Test
+    public void testMergeSortedLists_2() {
+        List<Integer> l1 = Arrays.asList(1, 2, 3);
+        List<Integer> l2 = Arrays.asList(1, 2, 3);
+        List<Integer> expected = Arrays.asList(1, 1, 2, 2, 3, 3);
+        assertEquals(expected, codingPractice.mergeSortedLists(l1, l2));
+    }
+
+    @Test
+    public void testMergeSortedListsDescendingUnique() {
+        List<Integer> list1 = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> list2 = Arrays.asList(2, 3, 5, 6, 10);
+        List<Integer> expected = Arrays.asList(10, 6, 5, 4, 3, 2, 1);
+        assertEquals(expected, codingPractice.mergeSortedListsDescendingUnique(list1, list2));
+    }
+
+    @Test
+    public void testRemoveCommonElements_1() {
+        List<Integer> res = codingPractice.removeCommonElements(Arrays.asList(2, 5, 7, 10), Arrays.asList(1, 5, 9));
+        assertEquals(Arrays.asList(1, 2, 7, 9, 10), res);
+    }
+
+    @Test
+    public void testRemoveCommonElements_2() {
+        List<Integer> res = codingPractice.removeCommonElements(Arrays.asList(1, 2, 3), Arrays.asList(2, 3, 4));
+        assertEquals(Arrays.asList(1, 4), res);
+    }
+
+    @Test
+    public void testMergeNSortedLists_1() {
+        List<List<Integer>> input = Arrays.asList(
+                Arrays.asList(1, 5, 9),
+                Arrays.asList(2, 3, 10),
+                Arrays.asList(4, 6, 8)
+        );
+        List<Integer> expected = Arrays.asList(1, 2, 3, 4, 5, 6, 8, 9, 10);
+        assertEquals(expected, codingPractice.mergeNSortedLists(input));
+    }
+
+    @Test
+    public void testMergeNSortedLists_2() {
+        List<List<Integer>> input = Arrays.asList(
+                Arrays.asList(111, 125, 143, 145),
+                Arrays.asList(39, 128, 150, 160),
+                Arrays.asList(58, 130, 166, 198)
+        );
+        List<Integer> expected = Arrays.asList(39, 58, 111, 125, 128, 130, 143, 145, 150, 160, 166, 198);
+        assertEquals(expected, codingPractice.mergeNSortedLists(input));
     }
 }
