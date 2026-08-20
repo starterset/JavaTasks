@@ -1,7 +1,5 @@
 package com.espboorg.effectiveJava.item1_staticFactory;
 
-import java.math.BigInteger;
-
 class Geolocation {
     private final double latitude;
     private final double longitude;
@@ -31,8 +29,6 @@ class Geolocation {
 
 public class StaticFactoryMethod {
     public static void main(String[] args) {
-        BigInteger prime = BigInteger.valueOf(Integer.MAX_VALUE);
-        System.out.println(prime);
         Geolocation loc = Geolocation.instance(40.187666, 44.482798);
         System.out.println(loc);
     }

@@ -1,7 +1,5 @@
 package com.espboorg.competitive.codesignal;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,75 +14,63 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CodingPracticeTest {
-    CodingPractice codingPractice;
-
-    @BeforeEach
-    void setUp() {
-        codingPractice = new CodingPractice();
-    }
-
-    @AfterEach
-    void tearDown() {
-        codingPractice = null;
-    }
-
     @Test
     void testAreCoprime() {
-        assertTrue(codingPractice.areCoprime(1, 1));
-        assertTrue(codingPractice.areCoprime(8, 25));
-        assertTrue(codingPractice.areCoprime(15, 28));
-        assertFalse(codingPractice.areCoprime(12, 18));
-        assertFalse(codingPractice.areCoprime(14, 49));
-        assertFalse(codingPractice.areCoprime(22, 77));
-        assertFalse(codingPractice.areCoprime(17, 51));
-        assertFalse(codingPractice.areCoprime(35, 49));
-        assertTrue(codingPractice.areCoprime(2167, 2183));
+        assertTrue(CodingPractice.areCoprime(1, 1));
+        assertTrue(CodingPractice.areCoprime(8, 25));
+        assertTrue(CodingPractice.areCoprime(15, 28));
+        assertFalse(CodingPractice.areCoprime(12, 18));
+        assertFalse(CodingPractice.areCoprime(14, 49));
+        assertFalse(CodingPractice.areCoprime(22, 77));
+        assertFalse(CodingPractice.areCoprime(17, 51));
+        assertFalse(CodingPractice.areCoprime(35, 49));
+        assertTrue(CodingPractice.areCoprime(2167, 2183));
     }
 
     @Test
     void testNthPrime() {
-        assertEquals(2, codingPractice.nthPrime(1));
-        assertEquals(3, codingPractice.nthPrime(2));
-        assertEquals(5, codingPractice.nthPrime(3));
-        assertEquals(7, codingPractice.nthPrime(4));
-        assertEquals(11, codingPractice.nthPrime(5));
-        assertEquals(13, codingPractice.nthPrime(6));
-        assertEquals(17, codingPractice.nthPrime(7));
+        assertEquals(2, CodingPractice.nthPrime(1));
+        assertEquals(3, CodingPractice.nthPrime(2));
+        assertEquals(5, CodingPractice.nthPrime(3));
+        assertEquals(7, CodingPractice.nthPrime(4));
+        assertEquals(11, CodingPractice.nthPrime(5));
+        assertEquals(13, CodingPractice.nthPrime(6));
+        assertEquals(17, CodingPractice.nthPrime(7));
     }
 
     @Test
     void testIndexOfFirstOccurrence() {
         List<Integer> integerList = Arrays.asList(1, 2, 3, 2, 4, 2, 7, 5, 5, 8, 4, 7, 6, 3, 9, 6);
-        assertEquals(0, codingPractice.indexOfFirstOccurrence(integerList, 1));
-        assertEquals(1, codingPractice.indexOfFirstOccurrence(integerList, 2));
-        assertEquals(2, codingPractice.indexOfFirstOccurrence(integerList, 3));
-        assertEquals(4, codingPractice.indexOfFirstOccurrence(integerList, 4));
-        assertEquals(7, codingPractice.indexOfFirstOccurrence(integerList, 5));
-        assertEquals(12, codingPractice.indexOfFirstOccurrence(integerList, 6));
-        assertEquals(6, codingPractice.indexOfFirstOccurrence(integerList, 7));
-        assertEquals(9, codingPractice.indexOfFirstOccurrence(integerList, 8));
-        assertEquals(14, codingPractice.indexOfFirstOccurrence(integerList, 9));
-        assertEquals(-1, codingPractice.indexOfFirstOccurrence(integerList, 10));
-        assertEquals(-1, codingPractice.indexOfFirstOccurrence(integerList, 63));
+        assertEquals(0, CodingPractice.indexOfFirstOccurrence(integerList, 1));
+        assertEquals(1, CodingPractice.indexOfFirstOccurrence(integerList, 2));
+        assertEquals(2, CodingPractice.indexOfFirstOccurrence(integerList, 3));
+        assertEquals(4, CodingPractice.indexOfFirstOccurrence(integerList, 4));
+        assertEquals(7, CodingPractice.indexOfFirstOccurrence(integerList, 5));
+        assertEquals(12, CodingPractice.indexOfFirstOccurrence(integerList, 6));
+        assertEquals(6, CodingPractice.indexOfFirstOccurrence(integerList, 7));
+        assertEquals(9, CodingPractice.indexOfFirstOccurrence(integerList, 8));
+        assertEquals(14, CodingPractice.indexOfFirstOccurrence(integerList, 9));
+        assertEquals(-1, CodingPractice.indexOfFirstOccurrence(integerList, 10));
+        assertEquals(-1, CodingPractice.indexOfFirstOccurrence(integerList, 63));
     }
 
     @Test
     void testCountUniqueElements() {
-        assertEquals(3, codingPractice.countUniqueElements(Arrays.asList(1, 2, 3, 2, 4)));
-        assertEquals(6, codingPractice.countUniqueElements(Arrays.asList(11, 32, 83, 32, 44, 58, 61, 11, 32, 44, 31, 98, 94, 98, 65)));
-        assertEquals(0, codingPractice.countUniqueElements(Arrays.asList(-1000, -1000, -1000, 1000, 1000, 1000)));
-        assertEquals(0, codingPractice.countUniqueElements(Arrays.asList(1000, 1000, 1000, 1000, 1000, -1000, -1000, -1000)));
+        assertEquals(3, CodingPractice.countUniqueElements(Arrays.asList(1, 2, 3, 2, 4)));
+        assertEquals(6, CodingPractice.countUniqueElements(Arrays.asList(11, 32, 83, 32, 44, 58, 61, 11, 32, 44, 31, 98, 94, 98, 65)));
+        assertEquals(0, CodingPractice.countUniqueElements(Arrays.asList(-1000, -1000, -1000, 1000, 1000, 1000)));
+        assertEquals(0, CodingPractice.countUniqueElements(Arrays.asList(1000, 1000, 1000, 1000, 1000, -1000, -1000, -1000)));
     }
 
     @Test
     void testReverseList() {
-        var reversed = codingPractice.reverseList(Arrays.asList(1, 2, 3, 4, 5));
+        var reversed = CodingPractice.reverseList(Arrays.asList(1, 2, 3, 4, 5));
         assertEquals(5, reversed.size());
         assertEquals(5, reversed.getFirst());
         assertEquals(3, reversed.get(reversed.size() / 2));
         assertEquals(1, reversed.getLast());
 
-        reversed = codingPractice.reverseList(Arrays.asList(100, 25, 43, 20, 91, 101, 235, 364));
+        reversed = CodingPractice.reverseList(Arrays.asList(100, 25, 43, 20, 91, 101, 235, 364));
         assertEquals(8, reversed.size());
         assertEquals(364, reversed.getFirst());
         assertEquals(20, reversed.get(reversed.size() / 2));
@@ -93,37 +79,37 @@ class CodingPracticeTest {
 
     @Test
     void shiftListElements() {
-        var shiftedList = codingPractice.shiftListElements(Arrays.asList(1, 2, 3, 4, 5), 2);
+        var shiftedList = CodingPractice.shiftListElements(Arrays.asList(1, 2, 3, 4, 5), 2);
         assertEquals(5, shiftedList.size());
         assertEquals(4, shiftedList.getFirst());
         assertEquals(1, shiftedList.get(shiftedList.size() / 2));
         assertEquals(3, shiftedList.getLast());
 
-        shiftedList = codingPractice.shiftListElements(Arrays.asList(1, 2, 3, 4, 5), -1);
+        shiftedList = CodingPractice.shiftListElements(Arrays.asList(1, 2, 3, 4, 5), -1);
         assertEquals(5, shiftedList.size());
         assertEquals(2, shiftedList.getFirst());
         assertEquals(4, shiftedList.get(shiftedList.size() / 2));
         assertEquals(1, shiftedList.getLast());
 
-        shiftedList = codingPractice.shiftListElements(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8), -8);
+        shiftedList = CodingPractice.shiftListElements(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8), -8);
         assertEquals(8, shiftedList.size());
         assertEquals(1, shiftedList.getFirst());
         assertEquals(5, shiftedList.get(shiftedList.size() / 2));
         assertEquals(8, shiftedList.getLast());
 
-        shiftedList = codingPractice.shiftListElements(Arrays.asList(-1000, -999, -998, -997, -996), -1000);
+        shiftedList = CodingPractice.shiftListElements(Arrays.asList(-1000, -999, -998, -997, -996), -1000);
         assertEquals(5, shiftedList.size());
         assertEquals(-1000, shiftedList.getFirst());
         assertEquals(-998, shiftedList.get(shiftedList.size() / 2));
         assertEquals(-996, shiftedList.getLast());
 
-        shiftedList = codingPractice.shiftListElements(Arrays.asList(1, 5, 10, 15, 20), 100);
+        shiftedList = CodingPractice.shiftListElements(Arrays.asList(1, 5, 10, 15, 20), 100);
         assertEquals(5, shiftedList.size());
         assertEquals(1, shiftedList.getFirst());
         assertEquals(10, shiftedList.get(shiftedList.size() / 2));
         assertEquals(20, shiftedList.getLast());
 
-        shiftedList = codingPractice.shiftListElements(Arrays.asList(1, 2, 3), -4);
+        shiftedList = CodingPractice.shiftListElements(Arrays.asList(1, 2, 3), -4);
         assertEquals(3, shiftedList.size());
         assertEquals(2, shiftedList.getFirst());
         assertEquals(3, shiftedList.get(shiftedList.size() / 2));
@@ -134,68 +120,68 @@ class CodingPracticeTest {
     void testContiguousSubarray1() {
         int[] listA = {1, 2, 2, 3, 2, 4, 5};
         int[] listB = {2, 3, 3};
-        assertFalse(codingPractice.contiguousSubarray(listA, listB));
+        assertFalse(CodingPractice.contiguousSubarray(listA, listB));
     }
 
     @Test
     void testContiguousSubarray2() {
         int[] listA = {-1, -2, -3, -4, -5};
         int[] listB = {-3, -2, -4};
-        assertFalse(codingPractice.contiguousSubarray(listA, listB));
+        assertFalse(CodingPractice.contiguousSubarray(listA, listB));
     }
 
     @Test
     void testContiguousSubarray3() {
         int[] listA = {1, 2, 3, 4, 5};
         int[] listB = {2, 3, 4};
-        assertTrue(codingPractice.contiguousSubarray(listA, listB));
+        assertTrue(CodingPractice.contiguousSubarray(listA, listB));
     }
 
     @Test
     void testContiguousSubarray4() {
         int[] listA = {1, -1, 3, -2, 3, 2, 5};
         int[] listB = {3, 2};
-        assertTrue(codingPractice.contiguousSubarray(listA, listB));
+        assertTrue(CodingPractice.contiguousSubarray(listA, listB));
     }
 
     @Test
     void testContiguousSubarray5() {
         int[] listA = {1, 2, 2, 3, 2, 4, 5};
         int[] listB = {2, 2, 3};
-        assertTrue(codingPractice.contiguousSubarray(listA, listB));
+        assertTrue(CodingPractice.contiguousSubarray(listA, listB));
     }
 
     @Test
     void testContiguousSubarray6() {
         int[] listA = {-5, 9, -5};
         int[] listB = {-5};
-        assertTrue(codingPractice.contiguousSubarray(listA, listB));
+        assertTrue(CodingPractice.contiguousSubarray(listA, listB));
     }
 
     @Test
     void testContiguousSubarray7() {
         int[] listA = {1, 2, 3, 4, 5};
         int[] listB = {3, 4, 6};
-        assertFalse(codingPractice.contiguousSubarray(listA, listB));
+        assertFalse(CodingPractice.contiguousSubarray(listA, listB));
     }
 
     @Test
     void testContiguousSubarray8() {
         int[] listA = {5, 4, 3, 2, 1};
         int[] listB = {1, 3, 2};
-        assertFalse(codingPractice.contiguousSubarray(listA, listB));
+        assertFalse(CodingPractice.contiguousSubarray(listA, listB));
     }
 
     @Test
     void testContiguousSubarray9() {
         int[] listA = {-5, 9, -5};
         int[] listB = {5};
-        assertFalse(codingPractice.contiguousSubarray(listA, listB));
+        assertFalse(CodingPractice.contiguousSubarray(listA, listB));
     }
 
     @Test
     void testGenerateListFromNTo1_1() {
-        List<Integer> generatedListFromNTo1 = codingPractice.generateListFromNTo1(5);
+        List<Integer> generatedListFromNTo1 = CodingPractice.generateListFromNTo1(5);
         assertEquals(5, generatedListFromNTo1.size());
         assertEquals(5, generatedListFromNTo1.getFirst());
         assertEquals(1, generatedListFromNTo1.getLast());
@@ -203,7 +189,7 @@ class CodingPracticeTest {
 
     @Test
     void testGenerateListFromNTo1_2() {
-        List<Integer> generatedListFromNTo1 = codingPractice.generateListFromNTo1(20);
+        List<Integer> generatedListFromNTo1 = CodingPractice.generateListFromNTo1(20);
         assertEquals(20, generatedListFromNTo1.size());
         assertEquals(20, generatedListFromNTo1.getFirst());
         assertEquals(1, generatedListFromNTo1.getLast());
@@ -211,20 +197,20 @@ class CodingPracticeTest {
 
     @Test
     void testSumOfDigitsRaisedToPositions() {
-        assertEquals(36, codingPractice.sumOfDigitsRaisedToPositions(253));
-        assertEquals(78, codingPractice.sumOfDigitsRaisedToPositions(1429));
-        assertEquals(2437, codingPractice.sumOfDigitsRaisedToPositions(7253));
+        assertEquals(36, CodingPractice.sumOfDigitsRaisedToPositions(253));
+        assertEquals(78, CodingPractice.sumOfDigitsRaisedToPositions(1429));
+        assertEquals(2437, CodingPractice.sumOfDigitsRaisedToPositions(7253));
     }
 
     @Test
     void testReverseString() {
-        assertEquals("olleh", codingPractice.reverseString("hello"));
+        assertEquals("olleh", CodingPractice.reverseString("hello"));
     }
 
     @Test
     void testFibonacci() {
-        assertEquals(2, codingPractice.fibonacci(3));
-        assertEquals(55, codingPractice.fibonacci(10));
+        assertEquals(2, CodingPractice.fibonacci(3));
+        assertEquals(55, CodingPractice.fibonacci(10));
     }
 
     @Test
@@ -234,7 +220,7 @@ class CodingPracticeTest {
                 {5, 1, 4},
                 {8, 5, 1}
         };
-        assertTrue(codingPractice.isToeplitzMatrix(matrix));
+        assertTrue(CodingPractice.isToeplitzMatrix(matrix));
     }
 
     @Test
@@ -244,7 +230,7 @@ class CodingPracticeTest {
                 {4, 5, 6},
                 {7, 8, 9}
         };
-        assertFalse(codingPractice.isToeplitzMatrix(matrix));
+        assertFalse(CodingPractice.isToeplitzMatrix(matrix));
     }
 
     @Test
@@ -255,7 +241,7 @@ class CodingPracticeTest {
                 {8, 5, 1, 4},
                 {7, 8, 5, 1}
         };
-        assertTrue(codingPractice.isToeplitzMatrix(matrix));
+        assertTrue(CodingPractice.isToeplitzMatrix(matrix));
     }
 
     @Test
@@ -266,7 +252,7 @@ class CodingPracticeTest {
                 {3, 4, 5, 6},
                 {4, 5, 6, 7}
         };
-        assertEquals(10, codingPractice.countLessThan(matrix, 5));
+        assertEquals(10, CodingPractice.countLessThan(matrix, 5));
     }
 
     @Test
@@ -278,7 +264,7 @@ class CodingPracticeTest {
                 {8, 16, 32, 64, 128},
                 {16, 32, 64, 128, 256}
         };
-        assertEquals(22, codingPractice.countLessThan(matrix, 100));
+        assertEquals(22, CodingPractice.countLessThan(matrix, 100));
     }
 
     @Test
@@ -289,7 +275,7 @@ class CodingPracticeTest {
                 {10, 15, 20, 25},
                 {20, 25, 30, 35}
         };
-        assertEquals(4, codingPractice.countLessThan(matrix, 5));
+        assertEquals(4, CodingPractice.countLessThan(matrix, 5));
     }
 
     @Test
@@ -298,7 +284,7 @@ class CodingPracticeTest {
                 {1000000, 1000000},
                 {1000000, 1000000}
         };
-        assertEquals(0, codingPractice.countLessThan(matrix, 1000000));
+        assertEquals(0, CodingPractice.countLessThan(matrix, 1000000));
     }
 
     @Test
@@ -309,7 +295,7 @@ class CodingPracticeTest {
                 {3, 4, 5, 6},
                 {4, 5, 6, 7}
         };
-        assertEquals(3, codingPractice.countLessThan(matrix, 3));
+        assertEquals(3, CodingPractice.countLessThan(matrix, 3));
     }
 
     @Test
@@ -320,7 +306,7 @@ class CodingPracticeTest {
                 {3, 8, 5, 6},
                 {9, 5, 6, 7}
         };
-        List<Integer> minMax = codingPractice.minMaxInSecondaryDiagonal(grid);
+        List<Integer> minMax = CodingPractice.minMaxInSecondaryDiagonal(grid);
         assertEquals(1, minMax.getFirst());
         assertEquals(9, minMax.getLast());
     }
@@ -332,7 +318,7 @@ class CodingPracticeTest {
                 {14, 15, 16},
                 {22, 23, 24}
         };
-        assertNull(codingPractice.findRowWithTarget(grid, 25));
+        assertNull(CodingPractice.findRowWithTarget(grid, 25));
     }
 
     @Test
@@ -342,13 +328,13 @@ class CodingPracticeTest {
                 {2, 5, 8},
                 {3, 6, 9}
         };
-        assertEquals(2, codingPractice.findRowWithTarget(grid, 9));
+        assertEquals(2, CodingPractice.findRowWithTarget(grid, 9));
     }
 
     @Test
     void testReverseArray() {
         int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        int[] reversedArray = codingPractice.reverseArray(array);
+        int[] reversedArray = CodingPractice.reverseArray(array);
         assertEquals(9, reversedArray[0]);
         assertEquals(8, reversedArray[1]);
         assertEquals(2, reversedArray[7]);
@@ -358,7 +344,7 @@ class CodingPracticeTest {
     @Test
     void testAntiRotateArray() {
         int[] array = {1, 2, 3, 4, 5, 6, 7};
-        codingPractice.antiRotateArray(array, 3);
+        CodingPractice.antiRotateArray(array, 3);
         assertEquals(4, array[0]);
         assertEquals(5, array[1]);
         assertEquals(6, array[2]);
@@ -371,7 +357,7 @@ class CodingPracticeTest {
     @Test
     void testShuffleArray_1() {
         List<Integer> integerList = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8));
-        List<Integer> shuffledArray = codingPractice.shuffleArray(integerList, 3);
+        List<Integer> shuffledArray = CodingPractice.shuffleArray(integerList, 3);
         assertEquals(1, shuffledArray.getFirst());
         assertEquals(2, shuffledArray.get(1));
         assertEquals(4, shuffledArray.get(2));
@@ -385,7 +371,7 @@ class CodingPracticeTest {
     @Test
     void testShuffleArray_2() {
         List<Integer> integerList = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8));
-        List<Integer> shuffledArray = codingPractice.shuffleArray(integerList, 1);
+        List<Integer> shuffledArray = CodingPractice.shuffleArray(integerList, 1);
         assertEquals(1, shuffledArray.getFirst());
         assertEquals(2, shuffledArray.get(1));
         assertEquals(3, shuffledArray.get(2));
@@ -399,7 +385,7 @@ class CodingPracticeTest {
     @Test
     void testShuffleArray_3() {
         List<Integer> integerList = new ArrayList<>(List.of(766, 243, -12, 24, 0, 41));
-        List<Integer> shuffledArray = codingPractice.shuffleArray(integerList, 2);
+        List<Integer> shuffledArray = CodingPractice.shuffleArray(integerList, 2);
         assertEquals(766, shuffledArray.getFirst());
         assertEquals(-12, shuffledArray.get(1));
         assertEquals(0, shuffledArray.get(2));
@@ -411,7 +397,7 @@ class CodingPracticeTest {
     @Test
     void testShuffleArray_4() {
         List<Integer> integerList = new ArrayList<>(List.of(100, 200, 300, 400, 500, 600, 700, 800, 900));
-        List<Integer> shuffledArray = codingPractice.shuffleArray(integerList, 9);
+        List<Integer> shuffledArray = CodingPractice.shuffleArray(integerList, 9);
         assertEquals(100, shuffledArray.getFirst());
         assertEquals(200, shuffledArray.get(1));
         assertEquals(300, shuffledArray.get(2));
@@ -426,7 +412,7 @@ class CodingPracticeTest {
     @Test
     void testReverseArrayInChunks_1() {
         int[] array = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
-        int[] reversed = codingPractice.reverseArrayInGroups(array, 3);
+        int[] reversed = CodingPractice.reverseArrayInGroups(array, 3);
         assertEquals(3, reversed[0]);
         assertEquals(2, reversed[1]);
         assertEquals(1, reversed[2]);
@@ -441,7 +427,7 @@ class CodingPracticeTest {
     @Test
     void testReverseArrayInChunks_2() {
         int[] array = new int[]{2, 3};
-        int[] reversed = codingPractice.reverseArrayInGroups(array, 2);
+        int[] reversed = CodingPractice.reverseArrayInGroups(array, 2);
         assertEquals(3, reversed[0]);
         assertEquals(2, reversed[1]);
     }
@@ -449,7 +435,7 @@ class CodingPracticeTest {
     @Test
     void testReverseArrayInChunks_3() {
         int[] array = new int[]{10, 20, 30, 40, 50, 60, 70};
-        int[] reversed = codingPractice.reverseArrayInGroups(array, 5);
+        int[] reversed = CodingPractice.reverseArrayInGroups(array, 5);
         assertEquals(50, reversed[0]);
         assertEquals(40, reversed[1]);
         assertEquals(30, reversed[2]);
@@ -465,7 +451,7 @@ class CodingPracticeTest {
         int[] input = {1, 2, 3, 4, 5, 6, 7, 8};
         int[] expected = {3, 4, 5, 6, 1, 2, 7, 8};
 
-        codingPractice.rearrangeArray(input);
+        CodingPractice.rearrangeArray(input);
 
         assertArrayEquals(expected, input, "Array should match [Q2, Q3, Q1, Q4]");
     }
@@ -476,7 +462,7 @@ class CodingPracticeTest {
         int[] input = {10, 20, 30, 40};
         int[] expected = {20, 30, 10, 40};
 
-        codingPractice.rearrangeArray(input);
+        CodingPractice.rearrangeArray(input);
 
         assertArrayEquals(expected, input);
     }
@@ -485,7 +471,7 @@ class CodingPracticeTest {
     @MethodSource("provideNonDivisibleCases")
     @DisplayName("Test Array Lengths Not Divisible By 4")
     void testNonDivisibleLengths(int n, int[] input, int[] expected) {
-        codingPractice.rearrangeArray(input);
+        CodingPractice.rearrangeArray(input);
         assertArrayEquals(expected, input);
     }
 
@@ -510,22 +496,22 @@ class CodingPracticeTest {
     void testBoundaryCasesLessThanFour() {
         // n = 0
         int[] empty = {};
-        codingPractice.rearrangeArray(empty);
+        CodingPractice.rearrangeArray(empty);
         assertArrayEquals(new int[]{}, empty);
 
         // n = 1
         int[] single = {42};
-        codingPractice.rearrangeArray(single);
+        CodingPractice.rearrangeArray(single);
         assertArrayEquals(new int[]{42}, single);
 
         // n = 2
         int[] pair = {1, 2};
-        codingPractice.rearrangeArray(pair);
+        CodingPractice.rearrangeArray(pair);
         assertArrayEquals(new int[]{1, 2}, pair);
 
         // n = 3
         int[] trio = {1, 2, 3};
-        codingPractice.rearrangeArray(trio);
+        CodingPractice.rearrangeArray(trio);
         assertArrayEquals(new int[]{1, 2, 3}, trio);
     }
 
@@ -535,117 +521,117 @@ class CodingPracticeTest {
         int[] input = {-5, 0, -5, 10, 20, 30, -5, 100};
         int[] expected = {-5, 10, 20, 30, -5, 0, -5, 100};
 
-        codingPractice.rearrangeArray(input);
+        CodingPractice.rearrangeArray(input);
 
         assertArrayEquals(expected, input);
     }
 
     @Test
     public void testCommonCharsInOrder() {
-        assertEquals("abcd", codingPractice.commonCharsInOrder("abcd", "dcba"));
-        assertEquals("ape", codingPractice.commonCharsInOrder("apple", "peach"));
-        assertEquals("abc", codingPractice.commonCharsInOrder("aabbcc", "abc"));
-        assertEquals("aaaa", codingPractice.commonCharsInOrder("aaaa", "aaaa"));
-        assertEquals("abcdef", codingPractice.commonCharsInOrder("abcdef", "fedcba"));
-        assertEquals("abcd", codingPractice.commonCharsInOrder("aabbccdd", "bcda"));
-        assertEquals("python", codingPractice.commonCharsInOrder("python", "thonpy"));
-        assertEquals("iervew", codingPractice.commonCharsInOrder("interview", "review"));
-        assertEquals("", codingPractice.commonCharsInOrder("aaaaa", "b"));
-        assertEquals("", codingPractice.commonCharsInOrder("abc", "def"));
+        assertEquals("abcd", CodingPractice.commonCharsInOrder("abcd", "dcba"));
+        assertEquals("ape", CodingPractice.commonCharsInOrder("apple", "peach"));
+        assertEquals("abc", CodingPractice.commonCharsInOrder("aabbcc", "abc"));
+        assertEquals("aaaa", CodingPractice.commonCharsInOrder("aaaa", "aaaa"));
+        assertEquals("abcdef", CodingPractice.commonCharsInOrder("abcdef", "fedcba"));
+        assertEquals("abcd", CodingPractice.commonCharsInOrder("aabbccdd", "bcda"));
+        assertEquals("python", CodingPractice.commonCharsInOrder("python", "thonpy"));
+        assertEquals("iervew", CodingPractice.commonCharsInOrder("interview", "review"));
+        assertEquals("", CodingPractice.commonCharsInOrder("aaaaa", "b"));
+        assertEquals("", CodingPractice.commonCharsInOrder("abc", "def"));
     }
 
     @Test
     public void testLongestCommonSuffix() {
-        assertEquals("arking", codingPractice.longestCommonSuffix(new String[]{"barking", "parking", "starking"}));
-        assertEquals("ower", codingPractice.longestCommonSuffix(new String[]{"flower", "tower", "power"}));
-        assertEquals("a", codingPractice.longestCommonSuffix(new String[]{"alpha", "beta", "gamma"}));
-        assertEquals("acer", codingPractice.longestCommonSuffix(new String[]{"racer", "placer", "effacer"}));
-        assertEquals("ello", codingPractice.longestCommonSuffix(new String[]{"hello", "jello"}));
-        assertEquals("word", codingPractice.longestCommonSuffix(new String[]{"word"}));
-        assertEquals("apple", codingPractice.longestCommonSuffix(new String[]{"apple", "grapple", "pineapple"}));
-        assertEquals("a", codingPractice.longestCommonSuffix(new String[]{"a", "aa", "aaa"}));
-        assertEquals("", codingPractice.longestCommonSuffix(new String[]{"ab", "abc", "abcd"}));
-        assertEquals("", codingPractice.longestCommonSuffix(new String[]{}));
-        assertEquals("duction", codingPractice.longestCommonSuffix(new String[]{"introduction", "reduction", "production", "seduction"}));
-        assertEquals("ation", codingPractice.longestCommonSuffix(new String[]{"communication", "station", "vacation", "nation"}));
-        assertEquals("oon", codingPractice.longestCommonSuffix(new String[]{"spoon", "moon", "balloon", "cartoon", "raccoon"}));
-        assertEquals("dabra", codingPractice.longestCommonSuffix(new String[]{"abracadabra", "dabra", "califragilisticexpialidociousdabra"}));
-        assertEquals("mation", codingPractice.longestCommonSuffix(new String[]{"transformation", "information", "formation", "automation"}));
-        assertEquals("eater", codingPractice.longestCommonSuffix(new String[]{"repeater", "defeater", "heater", "seater", "eater"}));
-        assertEquals("ility", codingPractice.longestCommonSuffix(new String[]{"intelligibility", "responsibility", "agility", "ability"}));
-        assertEquals("ization", codingPractice.longestCommonSuffix(new String[]{"synchronization", "organization", "localization", "realization"}));
-        assertEquals("plication", codingPractice.longestCommonSuffix(new String[]{"complication", "application", "implication", "replication", "duplication"}));
-        assertEquals("anding", codingPractice.longestCommonSuffix(new String[]{"understanding", "withstanding", "demanding", "commanding", "handing"}));
+        assertEquals("arking", CodingPractice.longestCommonSuffix(new String[]{"barking", "parking", "starking"}));
+        assertEquals("ower", CodingPractice.longestCommonSuffix(new String[]{"flower", "tower", "power"}));
+        assertEquals("a", CodingPractice.longestCommonSuffix(new String[]{"alpha", "beta", "gamma"}));
+        assertEquals("acer", CodingPractice.longestCommonSuffix(new String[]{"racer", "placer", "effacer"}));
+        assertEquals("ello", CodingPractice.longestCommonSuffix(new String[]{"hello", "jello"}));
+        assertEquals("word", CodingPractice.longestCommonSuffix(new String[]{"word"}));
+        assertEquals("apple", CodingPractice.longestCommonSuffix(new String[]{"apple", "grapple", "pineapple"}));
+        assertEquals("a", CodingPractice.longestCommonSuffix(new String[]{"a", "aa", "aaa"}));
+        assertEquals("", CodingPractice.longestCommonSuffix(new String[]{"ab", "abc", "abcd"}));
+        assertEquals("", CodingPractice.longestCommonSuffix(new String[]{}));
+        assertEquals("duction", CodingPractice.longestCommonSuffix(new String[]{"introduction", "reduction", "production", "seduction"}));
+        assertEquals("ation", CodingPractice.longestCommonSuffix(new String[]{"communication", "station", "vacation", "nation"}));
+        assertEquals("oon", CodingPractice.longestCommonSuffix(new String[]{"spoon", "moon", "balloon", "cartoon", "raccoon"}));
+        assertEquals("dabra", CodingPractice.longestCommonSuffix(new String[]{"abracadabra", "dabra", "califragilisticexpialidociousdabra"}));
+        assertEquals("mation", CodingPractice.longestCommonSuffix(new String[]{"transformation", "information", "formation", "automation"}));
+        assertEquals("eater", CodingPractice.longestCommonSuffix(new String[]{"repeater", "defeater", "heater", "seater", "eater"}));
+        assertEquals("ility", CodingPractice.longestCommonSuffix(new String[]{"intelligibility", "responsibility", "agility", "ability"}));
+        assertEquals("ization", CodingPractice.longestCommonSuffix(new String[]{"synchronization", "organization", "localization", "realization"}));
+        assertEquals("plication", CodingPractice.longestCommonSuffix(new String[]{"complication", "application", "implication", "replication", "duplication"}));
+        assertEquals("anding", CodingPractice.longestCommonSuffix(new String[]{"understanding", "withstanding", "demanding", "commanding", "handing"}));
     }
 
     @Test
     public void testRepeatSubstring() {
-        assertEquals("ab", codingPractice.repeatSubstring("ababab"));
-        assertEquals("", codingPractice.repeatSubstring("abcab"));
-        assertEquals("", codingPractice.repeatSubstring("abcab"));
-        assertEquals("", codingPractice.repeatSubstring("abcabcab"));
-        assertEquals("", codingPractice.repeatSubstring("abcabcabd"));
-        assertEquals("zz", codingPractice.repeatSubstring("zzzz"));
-        assertEquals("", codingPractice.repeatSubstring("#$#$$$#$#"));
-        assertEquals("Python", codingPractice.repeatSubstring("PythonPythonPython"));
-        assertEquals("", codingPractice.repeatSubstring("0"));
-        assertEquals("", codingPractice.repeatSubstring("10011001100110011"));
-        assertEquals("qwerty", codingPractice.repeatSubstring("qwertyqwertyqwerty"));
-        assertEquals("aaaaa", codingPractice.repeatSubstring("aaaaaaaaaa"));
-        assertEquals("", codingPractice.repeatSubstring("abababcbcbcbc"));
-        assertEquals("abab", codingPractice.repeatSubstring("abababab"));
-        assertEquals("11111", codingPractice.repeatSubstring("1111111111"));
-        assertEquals("xyzxyzxyz", codingPractice.repeatSubstring("xyzxyzxyzxyzxyzxyz"));
-        assertEquals("a".repeat(5000), codingPractice.repeatSubstring("a".repeat(10000)));
-        assertEquals("bmbmbmbmbmbmbmbmbmbmb", codingPractice.repeatSubstring("bmbmbmbmbmbmbmbmbmbmbbmbmbmbmbmbmbmbmbmbmb"));
-        assertEquals("lololo", codingPractice.repeatSubstring("lololololololololo"));
-        assertEquals("abcdefghij", codingPractice.repeatSubstring("abcdefghijabcdefghijabcdefghij"));
-        assertEquals("", codingPractice.repeatSubstring("y".repeat(999) + "z"));
-        assertEquals("tut", codingPractice.repeatSubstring("tuttuttuttuttut"));
+        assertEquals("ab", CodingPractice.repeatSubstring("ababab"));
+        assertEquals("", CodingPractice.repeatSubstring("abcab"));
+        assertEquals("", CodingPractice.repeatSubstring("abcab"));
+        assertEquals("", CodingPractice.repeatSubstring("abcabcab"));
+        assertEquals("", CodingPractice.repeatSubstring("abcabcabd"));
+        assertEquals("zz", CodingPractice.repeatSubstring("zzzz"));
+        assertEquals("", CodingPractice.repeatSubstring("#$#$$$#$#"));
+        assertEquals("Python", CodingPractice.repeatSubstring("PythonPythonPython"));
+        assertEquals("", CodingPractice.repeatSubstring("0"));
+        assertEquals("", CodingPractice.repeatSubstring("10011001100110011"));
+        assertEquals("qwerty", CodingPractice.repeatSubstring("qwertyqwertyqwerty"));
+        assertEquals("aaaaa", CodingPractice.repeatSubstring("aaaaaaaaaa"));
+        assertEquals("", CodingPractice.repeatSubstring("abababcbcbcbc"));
+        assertEquals("abab", CodingPractice.repeatSubstring("abababab"));
+        assertEquals("11111", CodingPractice.repeatSubstring("1111111111"));
+        assertEquals("xyzxyzxyz", CodingPractice.repeatSubstring("xyzxyzxyzxyzxyzxyz"));
+        assertEquals("a".repeat(5000), CodingPractice.repeatSubstring("a".repeat(10000)));
+        assertEquals("bmbmbmbmbmbmbmbmbmbmb", CodingPractice.repeatSubstring("bmbmbmbmbmbmbmbmbmbmbbmbmbmbmbmbmbmbmbmbmb"));
+        assertEquals("lololo", CodingPractice.repeatSubstring("lololololololololo"));
+        assertEquals("abcdefghij", CodingPractice.repeatSubstring("abcdefghijabcdefghijabcdefghij"));
+        assertEquals("", CodingPractice.repeatSubstring("y".repeat(999) + "z"));
+        assertEquals("tut", CodingPractice.repeatSubstring("tuttuttuttuttut"));
     }
 
     @Test
     public void testEfficient_LCP() {
-        assertEquals("fl", codingPractice.efficient_LCP(new String[]{"floss", "flight", "floral"}));
-        assertEquals("acorns", codingPractice.efficient_LCP(new String[]{"acorns", "acornsa", "acornsac", "acornsab"}));
-        assertEquals("abcd", codingPractice.efficient_LCP(new String[]{"abcd", "abcd", "abcd", "abcd"}));
-        assertEquals("a", codingPractice.efficient_LCP(new String[]{"abc", "a", "abcd"}));
-        assertEquals("abcd", codingPractice.efficient_LCP(new String[]{"abcde", "abcdf"}));
-        assertEquals("", codingPractice.efficient_LCP(new String[]{"tree", "treat", "break"}));
-        assertEquals("", codingPractice.efficient_LCP(new String[]{"abcd", "efgh", "ijkl"}));
-        assertEquals("appl", codingPractice.efficient_LCP(new String[]{"apple", "applied", "apply"}));
-        assertEquals("appl", codingPractice.efficient_LCP(new String[]{"apply", "applan", "applet"}));
-        assertEquals("", codingPractice.efficient_LCP(new String[]{"python", "java", "javascript"}));
-        assertEquals("anim", codingPractice.efficient_LCP(new String[]{"animal", "animosity", "animate"}));
-        assertEquals("so", codingPractice.efficient_LCP(new String[]{"song", "soprano", "sonar"}));
-        assertEquals("cru", codingPractice.efficient_LCP(new String[]{"crumble", "crunched", "crust"}));
-        assertEquals("", codingPractice.efficient_LCP(new String[]{"spring", "summer", "fall"}));
-        assertEquals("", codingPractice.efficient_LCP(new String[]{"", "abcd", "wxyz"}));
-        assertEquals("r", codingPractice.efficient_LCP(new String[]{"rotate", "rated", "rater"}));
-        assertEquals("tas", codingPractice.efficient_LCP(new String[]{"tasmania", "task", "tassel"}));
-        assertEquals("rock", codingPractice.efficient_LCP(new String[]{"rock", "rocket", "rocky"}));
-        assertEquals("inv", codingPractice.efficient_LCP(new String[]{"invitation", "invigorating", "invalid"}));
-        assertEquals("inter", codingPractice.efficient_LCP(new String[]{"intermingle", "intercept", "interchange"}));
+        assertEquals("fl", CodingPractice.efficient_LCP(new String[]{"floss", "flight", "floral"}));
+        assertEquals("acorns", CodingPractice.efficient_LCP(new String[]{"acorns", "acornsa", "acornsac", "acornsab"}));
+        assertEquals("abcd", CodingPractice.efficient_LCP(new String[]{"abcd", "abcd", "abcd", "abcd"}));
+        assertEquals("a", CodingPractice.efficient_LCP(new String[]{"abc", "a", "abcd"}));
+        assertEquals("abcd", CodingPractice.efficient_LCP(new String[]{"abcde", "abcdf"}));
+        assertEquals("", CodingPractice.efficient_LCP(new String[]{"tree", "treat", "break"}));
+        assertEquals("", CodingPractice.efficient_LCP(new String[]{"abcd", "efgh", "ijkl"}));
+        assertEquals("appl", CodingPractice.efficient_LCP(new String[]{"apple", "applied", "apply"}));
+        assertEquals("appl", CodingPractice.efficient_LCP(new String[]{"apply", "applan", "applet"}));
+        assertEquals("", CodingPractice.efficient_LCP(new String[]{"python", "java", "javascript"}));
+        assertEquals("anim", CodingPractice.efficient_LCP(new String[]{"animal", "animosity", "animate"}));
+        assertEquals("so", CodingPractice.efficient_LCP(new String[]{"song", "soprano", "sonar"}));
+        assertEquals("cru", CodingPractice.efficient_LCP(new String[]{"crumble", "crunched", "crust"}));
+        assertEquals("", CodingPractice.efficient_LCP(new String[]{"spring", "summer", "fall"}));
+        assertEquals("", CodingPractice.efficient_LCP(new String[]{"", "abcd", "wxyz"}));
+        assertEquals("r", CodingPractice.efficient_LCP(new String[]{"rotate", "rated", "rater"}));
+        assertEquals("tas", CodingPractice.efficient_LCP(new String[]{"tasmania", "task", "tassel"}));
+        assertEquals("rock", CodingPractice.efficient_LCP(new String[]{"rock", "rocket", "rocky"}));
+        assertEquals("inv", CodingPractice.efficient_LCP(new String[]{"invitation", "invigorating", "invalid"}));
+        assertEquals("inter", CodingPractice.efficient_LCP(new String[]{"intermingle", "intercept", "interchange"}));
     }
 
     @Test
     public void testFindMostCommonSubstring() {
-        assertEquals("anaba", codingPractice.findMostCommonSubstring("bananabananaba", 5));
-        assertEquals(".aa", codingPractice.findMostCommonSubstring("a.b.aa.ab.", 3));
-        assertEquals("ab", codingPractice.findMostCommonSubstring("abcabcabc", 2));
-        assertEquals("r", codingPractice.findMostCommonSubstring("zyxwvutsr", 1));
-        assertEquals("demiol", codingPractice.findMostCommonSubstring("epidemiology", 6));
-        assertEquals("abcd", codingPractice.findMostCommonSubstring("abcdabcdabcdabcdabcd", 4));
-        assertEquals("lol", codingPractice.findMostCommonSubstring("lololololo", 3));
-        assertEquals("a", codingPractice.findMostCommonSubstring("a", 1));
-        assertEquals("a", codingPractice.findMostCommonSubstring("aa", 1));
-        assertEquals("a", codingPractice.findMostCommonSubstring("abcdefgh", 1));
-        assertEquals("abcdefgh", codingPractice.findMostCommonSubstring("abcdefgh", 8));
-        assertEquals("xy", codingPractice.findMostCommonSubstring("xyzzyx", 2));
-        assertEquals("abcd", codingPractice.findMostCommonSubstring("abcd", 4));
-        assertEquals("a", codingPractice.findMostCommonSubstring("aaa", 1));
-        assertEquals("ace", codingPractice.findMostCommonSubstring("racecar", 3));
-        assertEquals("aaa", codingPractice.findMostCommonSubstring("aaabbb", 3));
+        assertEquals("anaba", CodingPractice.findMostCommonSubstring("bananabananaba", 5));
+        assertEquals(".aa", CodingPractice.findMostCommonSubstring("a.b.aa.ab.", 3));
+        assertEquals("ab", CodingPractice.findMostCommonSubstring("abcabcabc", 2));
+        assertEquals("r", CodingPractice.findMostCommonSubstring("zyxwvutsr", 1));
+        assertEquals("demiol", CodingPractice.findMostCommonSubstring("epidemiology", 6));
+        assertEquals("abcd", CodingPractice.findMostCommonSubstring("abcdabcdabcdabcdabcd", 4));
+        assertEquals("lol", CodingPractice.findMostCommonSubstring("lololololo", 3));
+        assertEquals("a", CodingPractice.findMostCommonSubstring("a", 1));
+        assertEquals("a", CodingPractice.findMostCommonSubstring("aa", 1));
+        assertEquals("a", CodingPractice.findMostCommonSubstring("abcdefgh", 1));
+        assertEquals("abcdefgh", CodingPractice.findMostCommonSubstring("abcdefgh", 8));
+        assertEquals("xy", CodingPractice.findMostCommonSubstring("xyzzyx", 2));
+        assertEquals("abcd", CodingPractice.findMostCommonSubstring("abcd", 4));
+        assertEquals("a", CodingPractice.findMostCommonSubstring("aaa", 1));
+        assertEquals("ace", CodingPractice.findMostCommonSubstring("racecar", 3));
+        assertEquals("aaa", CodingPractice.findMostCommonSubstring("aaabbb", 3));
     }
 
     @Test
@@ -653,7 +639,7 @@ class CodingPracticeTest {
         List<Integer> l1 = Arrays.asList(1, 3, 5, 7, 9);
         List<Integer> l2 = Arrays.asList(2, 2, 3, 4, 6, 6);
         List<Integer> expected = Arrays.asList(1, 2, 2, 3, 3, 4, 5, 6, 6, 7, 9);
-        assertEquals(expected, codingPractice.mergeSortedLists(l1, l2));
+        assertEquals(expected, CodingPractice.mergeSortedLists(l1, l2));
     }
 
     @Test
@@ -661,7 +647,7 @@ class CodingPracticeTest {
         List<Integer> l1 = Arrays.asList(1, 2, 3);
         List<Integer> l2 = Arrays.asList(1, 2, 3);
         List<Integer> expected = Arrays.asList(1, 1, 2, 2, 3, 3);
-        assertEquals(expected, codingPractice.mergeSortedLists(l1, l2));
+        assertEquals(expected, CodingPractice.mergeSortedLists(l1, l2));
     }
 
     @Test
@@ -669,18 +655,18 @@ class CodingPracticeTest {
         List<Integer> list1 = Arrays.asList(1, 2, 3, 4, 5);
         List<Integer> list2 = Arrays.asList(2, 3, 5, 6, 10);
         List<Integer> expected = Arrays.asList(10, 6, 5, 4, 3, 2, 1);
-        assertEquals(expected, codingPractice.mergeSortedListsDescendingUnique(list1, list2));
+        assertEquals(expected, CodingPractice.mergeSortedListsDescendingUnique(list1, list2));
     }
 
     @Test
     public void testRemoveCommonElements_1() {
-        List<Integer> res = codingPractice.removeCommonElements(Arrays.asList(2, 5, 7, 10), Arrays.asList(1, 5, 9));
+        List<Integer> res = CodingPractice.removeCommonElements(Arrays.asList(2, 5, 7, 10), Arrays.asList(1, 5, 9));
         assertEquals(Arrays.asList(1, 2, 7, 9, 10), res);
     }
 
     @Test
     public void testRemoveCommonElements_2() {
-        List<Integer> res = codingPractice.removeCommonElements(Arrays.asList(1, 2, 3), Arrays.asList(2, 3, 4));
+        List<Integer> res = CodingPractice.removeCommonElements(Arrays.asList(1, 2, 3), Arrays.asList(2, 3, 4));
         assertEquals(Arrays.asList(1, 4), res);
     }
 
@@ -692,7 +678,7 @@ class CodingPracticeTest {
                 Arrays.asList(4, 6, 8)
         );
         List<Integer> expected = Arrays.asList(1, 2, 3, 4, 5, 6, 8, 9, 10);
-        assertEquals(expected, codingPractice.mergeNSortedLists(input));
+        assertEquals(expected, CodingPractice.mergeNSortedLists(input));
     }
 
     @Test
@@ -703,6 +689,30 @@ class CodingPracticeTest {
                 Arrays.asList(58, 130, 166, 198)
         );
         List<Integer> expected = Arrays.asList(39, 58, 111, 125, 128, 130, 143, 145, 150, 160, 166, 198);
-        assertEquals(expected, codingPractice.mergeNSortedLists(input));
+        assertEquals(expected, CodingPractice.mergeNSortedLists(input));
+    }
+
+    @Test
+    public void testSelectionSort() {
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5, 7, 9}, CodingPractice.selectionSort(new int[]{1, 7, 5, 2, 3, 9, 4}));
+    }
+
+    @Test
+    public void testInsertionSort() {
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6}, CodingPractice.insertionSort(new int[]{5, 2, 4, 6, 1, 3}));
+    }
+
+    @Test
+    public void testMergeSort() {
+        int[] input = {10, 3, 2, 8, -1, 5, 1};
+        int[] output = {-1, 1, 2, 3, 5, 8, 10};
+        assertArrayEquals(CodingPractice.mergeSort(input), output);
+    }
+
+    @Test
+    public void testQuickSortCustom() {
+        List<Integer> input = Arrays.asList(6, 5, 3, 1, 8, 7, 2, 4);
+        List<Integer> expected = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8);
+        assertEquals(expected, CodingPractice.quickSortCustom(input));
     }
 }

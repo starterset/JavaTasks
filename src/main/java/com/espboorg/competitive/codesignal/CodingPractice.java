@@ -4,7 +4,9 @@ import java.util.*;
 
 public class CodingPractice {
 
+    // ==========================================
     // Standard Math Algorithms in Java
+    // ==========================================
 
     /**
      * Java function that checks whether both a and b are coprime or not.
@@ -14,7 +16,7 @@ public class CodingPractice {
      * @param b int
      * @return true if both are coprime; false otherwise
      */
-    public boolean areCoprime(int a, int b) {
+    public static boolean areCoprime(int a, int b) {
         if (a <= 0 || b <= 0) {
             throw new IllegalArgumentException("Inputs must be positive integers.");
         }
@@ -51,7 +53,7 @@ public class CodingPractice {
      * @param n int
      * @return n-th prime number
      */
-    public int nthPrime(int n) {
+    public static int nthPrime(int n) {
         if (n <= 0) {
             throw new IllegalArgumentException("Inputs must be positive integers.");
         }
@@ -72,7 +74,7 @@ public class CodingPractice {
         return primeNumbers.get(n - 1);
     }
 
-    private boolean isNextPrime(int number, List<Integer> primeNumbers) {
+    private static boolean isNextPrime(int number, List<Integer> primeNumbers) {
         for (int i : primeNumbers) {
             if (i * i > number) {
                 break;
@@ -91,7 +93,7 @@ public class CodingPractice {
      * @param val  int
      * @return index of the first occurrence of a specific value, if the value isn't found, return -1
      */
-    public int indexOfFirstOccurrence(List<Integer> list, int val) {
+    public static int indexOfFirstOccurrence(List<Integer> list, int val) {
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i) == val) {
                 return i;
@@ -106,7 +108,7 @@ public class CodingPractice {
      * @param nums list
      * @return count of unique elements
      */
-    public int countUniqueElements(List<Integer> nums) {
+    public static int countUniqueElements(List<Integer> nums) {
         int count = 0;
         for (int i = 0; i < nums.size(); i++) {
             boolean isUnique = true;
@@ -129,7 +131,7 @@ public class CodingPractice {
      * @param numbers list of integers
      * @return reversed list of integers
      */
-    public List<Integer> reverseList(List<Integer> numbers) {
+    public static List<Integer> reverseList(List<Integer> numbers) {
         if (numbers.isEmpty()) {
             return numbers;
         }
@@ -155,7 +157,7 @@ public class CodingPractice {
      * @param shift       shift positions
      * @return shifted list
      */
-    public List<Integer> shiftListElements(List<Integer> integerList, int shift) {
+    public static List<Integer> shiftListElements(List<Integer> integerList, int shift) {
         if (integerList == null || integerList.isEmpty()) {
             return new ArrayList<>();
         }
@@ -188,7 +190,7 @@ public class CodingPractice {
      * @param listB list
      * @return true if listB is a contiguous subarray of listA, and false otherwise
      */
-    public boolean contiguousSubarray(int[] listA, int[] listB) {
+    public static boolean contiguousSubarray(int[] listA, int[] listB) {
         if (listB.length == 0) {
             return true;
         }
@@ -208,7 +210,7 @@ public class CodingPractice {
         return false;
     }
 
-    private boolean isContiguous(int[] listA, int[] listB, int index) {
+    private static boolean isContiguous(int[] listA, int[] listB, int index) {
         for (int i = 0; i < listB.length; i++) {
             if (index + i >= listA.length || listA[index + i] != listB[i]) {
                 return false;
@@ -217,8 +219,9 @@ public class CodingPractice {
         return true;
     }
 
-
+    // ==========================================
     // Simple Recursion in Practice
+    // ==========================================
 
     /**
      * Recursive function that takes an integer n as an input and
@@ -227,7 +230,7 @@ public class CodingPractice {
      * @param n integer
      * @return a list of integers from n to 1
      */
-    public List<Integer> generateListFromNTo1(int n) {
+    public static List<Integer> generateListFromNTo1(int n) {
         if (n == 1) {
             List<Integer> list = new LinkedList<>();
             list.add(n);
@@ -246,11 +249,11 @@ public class CodingPractice {
      * @param n positive integer
      * @return the sum
      */
-    public int sumOfDigitsRaisedToPositions(int n) {
+    public static int sumOfDigitsRaisedToPositions(int n) {
         return sumOfDigitsRaisedToPositionsHelper(n, 1);
     }
 
-    private int sumOfDigitsRaisedToPositionsHelper(int n, int position) {
+    private static int sumOfDigitsRaisedToPositionsHelper(int n, int position) {
         if (n < 10) {
             return power(n, position);
         }
@@ -259,7 +262,7 @@ public class CodingPractice {
         return powered + sumOfDigitsRaisedToPositionsHelper(n / 10, position + 1);
     }
 
-    private int power(int n, int exponent) {
+    private static int power(int n, int exponent) {
         int result = 1;
         for (int i = 0; i < exponent; i++) {
             result *= n;
@@ -273,7 +276,7 @@ public class CodingPractice {
      * @param s String
      * @return reversed String
      */
-    public String reverseString(String s) {
+    public static String reverseString(String s) {
         if (s == null || s.length() <= 1) {
             return s;
         }
@@ -286,7 +289,7 @@ public class CodingPractice {
      * @param n index
      * @return Fibonacci number at the index n
      */
-    public long fibonacci(int n) {
+    public static long fibonacci(int n) {
         List<Long> fibonacciList = new ArrayList<>();
         fibonacciList.add(0L);
         fibonacciList.add(1L);
@@ -294,7 +297,7 @@ public class CodingPractice {
         return fibonacciHelper(n, fibonacciList);
     }
 
-    private long fibonacciHelper(int n, List<Long> fibonacciList) {
+    private static long fibonacciHelper(int n, List<Long> fibonacciList) {
         if (n < fibonacciList.size()) {
             return fibonacciList.get(n);
         }
@@ -302,8 +305,9 @@ public class CodingPractice {
         return fibonacciList.get(n);
     }
 
-
+    // ==========================================
     // Simple Matrix Practice in Java
+    // ==========================================
 
     /**
      * Indicates whether the matrix is a Toeplitz matrix
@@ -311,7 +315,7 @@ public class CodingPractice {
      * @param matrix matrix of n×n size
      * @return true if all diagonals that run from the top-left to the bottom-right (↘ direction) are constant
      */
-    public boolean isToeplitzMatrix(int[][] matrix) {
+    public static boolean isToeplitzMatrix(int[][] matrix) {
         int length = matrix.length;
         int width = matrix[0].length;
         if (length != width) {
@@ -337,7 +341,7 @@ public class CodingPractice {
      * @param target given target
      * @return count of integers smaller than the given target
      */
-    public int countLessThan(int[][] matrix, int target) {
+    public static int countLessThan(int[][] matrix, int target) {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
             return 0;
         }
@@ -367,7 +371,7 @@ public class CodingPractice {
      * @param grid 2D matrix
      * @return list of two elements where the first element is the minimum value, and the second is the maximum value
      */
-    public List<Integer> minMaxInSecondaryDiagonal(int[][] grid) {
+    public static List<Integer> minMaxInSecondaryDiagonal(int[][] grid) {
         if (grid == null) {
             return Arrays.asList(null, null);
         }
@@ -400,7 +404,7 @@ public class CodingPractice {
         return Arrays.asList(minimum, maximum);
     }
 
-    public Integer findRowWithTarget(int[][] matrix, int target) {
+    public static Integer findRowWithTarget(int[][] matrix, int target) {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
             return 0;
         }
@@ -424,8 +428,9 @@ public class CodingPractice {
         return null;
     }
 
-
+    // ==========================================
     // Advanced Array Manipulation Techniques
+    // ==========================================
 
     /**
      * Reverse the array
@@ -433,13 +438,13 @@ public class CodingPractice {
      * @param arr array
      * @return reversed array
      */
-    public int[] reverseArray(int[] arr) {
+    public static int[] reverseArray(int[] arr) {
         int start = 0;
         int end = arr.length - 1;
         return reverseArray(arr, start, end);
     }
 
-    private int[] reverseArray(int[] arr, int start, int end) {
+    private static int[] reverseArray(int[] arr, int start, int end) {
         while (start < end) {
             int temp = arr[start];
             arr[start] = arr[end];
@@ -456,7 +461,7 @@ public class CodingPractice {
      * @param nums array
      * @param k    steps
      */
-    public void antiRotateArray(int[] nums, int k) {
+    public static void antiRotateArray(int[] nums, int k) {
         int size = nums.length;
 
         int shift = k % size;
@@ -466,7 +471,7 @@ public class CodingPractice {
         }
     }
 
-    private void shiftLeftByOne(int[] nums, int size) {
+    private static void shiftLeftByOne(int[] nums, int size) {
         int temp = nums[0];
 
         for (int i = 0; i < size; i++) {
@@ -486,7 +491,7 @@ public class CodingPractice {
      * @param k    k-th element
      * @return shuffled list of integers
      */
-    public List<Integer> shuffleArray(List<Integer> nums, int k) {
+    public static List<Integer> shuffleArray(List<Integer> nums, int k) {
         if (k == 0 || k == nums.size()) {
             return nums;
         }
@@ -501,7 +506,7 @@ public class CodingPractice {
         return nums;
     }
 
-    private void shiftLeftByOne(List<Integer> nums, int startIndex) {
+    private static void shiftLeftByOne(List<Integer> nums, int startIndex) {
         int temp = nums.get(startIndex);
 
         for (int i = startIndex; i < nums.size(); i++) {
@@ -520,7 +525,7 @@ public class CodingPractice {
      * @param k       size of groups
      * @return the newly organized array after the groups have been reversed
      */
-    public int[] reverseArrayInGroups(int[] numbers, int k) {
+    public static int[] reverseArrayInGroups(int[] numbers, int k) {
         if (k == 0 || k == 1) {
             return numbers;
         }
@@ -542,7 +547,7 @@ public class CodingPractice {
      *
      * @param nums array of integers
      */
-    public void rearrangeArray(int[] nums) {
+    public static void rearrangeArray(int[] nums) {
         if (nums == null || nums.length < 4) {
             return;
         }
@@ -562,8 +567,9 @@ public class CodingPractice {
         reverseArray(nums, middleEnd - quarter + 1, middleEnd);
     }
 
-
+    // ==========================================
     // Introduction to String Manipulation in Java
+    // ==========================================
 
     /**
      * Determine a new string, string3, that is formed by characters
@@ -574,7 +580,7 @@ public class CodingPractice {
      * @param string2 String
      * @return String containing common occurring characters
      */
-    public String commonCharsInOrder(String string1, String string2) {
+    public static String commonCharsInOrder(String string1, String string2) {
         int[] count = new int[256];
         for (int i = 0; i < string2.length(); i++) {
             char c = string2.charAt(i);
@@ -598,7 +604,7 @@ public class CodingPractice {
      * @param words array of strings
      * @return common suffix, or an empty string If the given array is empty or there is no common suffix
      */
-    public String longestCommonSuffix(String[] words) {
+    public static String longestCommonSuffix(String[] words) {
         if (words == null || words.length == 0) {
             return "";
         }
@@ -627,7 +633,7 @@ public class CodingPractice {
      * @param s string
      * @return the longest repeating substring
      */
-    public String repeatSubstring(String s) {
+    public static String repeatSubstring(String s) {
         if (s == null || s.length() < 2) {
             return "";
         }
@@ -650,7 +656,7 @@ public class CodingPractice {
      * @param words array of strings
      * @return longest common prefix
      */
-    public String efficient_LCP(String[] words) {
+    public static String efficient_LCP(String[] words) {
         if (words.length == 0) return "";
 
         Arrays.sort(words);
@@ -676,7 +682,7 @@ public class CodingPractice {
      * @param length substring length
      * @return most common substring
      */
-    public String findMostCommonSubstring(String s, int length) {
+    public static String findMostCommonSubstring(String s, int length) {
         if (s == null || length <= 0 || length > s.length()) {
             return "";
         }
@@ -694,7 +700,7 @@ public class CodingPractice {
         return retrieveMostCommonSubstring(frequencyMap);
     }
 
-    private String retrieveMostCommonSubstring(Map<String, Integer> frequencyMap) {
+    private static String retrieveMostCommonSubstring(Map<String, Integer> frequencyMap) {
         int maxFrequency = 0;
         String mostCommonSubstring = "";
         for (Map.Entry<String, Integer> entry : frequencyMap.entrySet()) {
@@ -711,8 +717,9 @@ public class CodingPractice {
         return mostCommonSubstring;
     }
 
-
+    // ==========================================
     // Advanced ArrayList Manipulation in Java
+    // ==========================================
 
     /**
      * Return a new list that results from merging the two input lists
@@ -723,7 +730,7 @@ public class CodingPractice {
      * @param list2 input list
      * @return merged list
      */
-    public List<Integer> mergeSortedLists(List<Integer> list1, List<Integer> list2) {
+    public static List<Integer> mergeSortedLists(List<Integer> list1, List<Integer> list2) {
         List<Integer> mergedList = new ArrayList<>(list1.size() + list2.size());
 
         int i = 0;
@@ -760,7 +767,7 @@ public class CodingPractice {
      * @param list2 sorted list in ascending order
      * @return merged list
      */
-    public List<Integer> mergeSortedListsDescendingUnique(List<Integer> list1, List<Integer> list2) {
+    public static List<Integer> mergeSortedListsDescendingUnique(List<Integer> list1, List<Integer> list2) {
         List<Integer> mergedList = new ArrayList<>(list1.size() + list2.size());
 
         int i = list1.size() - 1;
@@ -800,7 +807,7 @@ public class CodingPractice {
      * @param list2 sorted list in ascending order
      * @return merged list
      */
-    public List<Integer> removeCommonElements(List<Integer> list1, List<Integer> list2) {
+    public static List<Integer> removeCommonElements(List<Integer> list1, List<Integer> list2) {
         List<Integer> mergedList = new ArrayList<>(list1.size() + list2.size());
 
         int i = 0;
@@ -844,7 +851,7 @@ public class CodingPractice {
      * @implNote Expected time complexity is {@code O(n * m)}, where {@code n} is the total number
      * of lists and {@code m} is the maximum length of any individual list.
      */
-    public List<Integer> mergeNSortedLists(List<List<Integer>> lists) {
+    public static List<Integer> mergeNSortedLists(List<List<Integer>> lists) {
         if (lists == null || lists.isEmpty()) {
             return new ArrayList<>();
         }
@@ -864,5 +871,168 @@ public class CodingPractice {
             lists = tempLists;
         }
         return lists.getFirst();
+    }
+
+    // ==========================================
+    // Simple Sorting Algorithms with Java
+    // ==========================================
+
+    /// Sorts the array of integers in ascending order using the Selection Sort algorithm.
+    ///
+    /// @param arr the array of integers to be sorted in place
+    /// @return sorted array of integers in ascending order
+    /// @implNote Time Complexity:
+    ///   - Worst-case: `O(n²)`
+    ///   - Average-case: `O(n²)`
+    ///   - Best-case: `O(n²)`
+    ///
+    /// Space Complexity: `O(1)` auxiliary space as the array is modified in place.
+    public static int[] selectionSort(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            int temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+
+        return arr;
+    }
+
+    /// Sorts an array of integers in ascending order using the Insertion Sort algorithm.
+    ///
+    /// @param arr the array of integers to be sorted in place
+    /// @return sorted array of integers in ascending order
+    /// @implNote Time Complexity:
+    ///   - Best-case: `O(n)` when the array is already sorted
+    ///   - Average-case: `O(n²)`
+    ///   - Worst-case: `O(n²)` when the array is sorted in reverse order
+    ///
+    /// Space Complexity: `O(1)` auxiliary space as the array is modified in place.
+    public static int[] insertionSort(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            int key = arr[i];
+            int j = i - 1;
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = key;
+        }
+        return arr;
+    }
+
+    /// Sorts an array of integers in ascending order using the Merge Sort algorithm.
+    ///
+    /// Employs a divide-and-conquer strategy by recursively splitting the array into halves,
+    /// sorting each half, and merging the sorted sub-arrays into a single sorted array.
+    ///
+    /// @param array the array of integers to be sorted
+    /// @return a new sorted array containing the elements in ascending order, or the original input if `null` or empty
+    /// @implNote Time Complexity:
+    ///   - Best-case: `O(n log n)`
+    ///   - Average-case: `O(n log n)`
+    ///   - Worst-case: `O(n log n)`
+    ///
+    /// Space Complexity: `O(n)` auxiliary space for creating temporary sub-arrays during the merge steps.
+    public static int[] mergeSort(int[] array) {
+        int left = 0;
+        int right = array.length - 1;
+
+        merge(array, left, right);
+
+        return array;
+    }
+
+    private static void merge(int[] array, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        int mid = left + (right - left) / 2;
+        merge(array, left, mid);
+        merge(array, mid + 1, right);
+        mergePartition(array, left, mid, right);
+    }
+
+    private static void mergePartition(int[] array, int left, int mid, int right) {
+        int[] leftArr = new int[mid - left + 1];
+        int[] rightArr = new int[right - mid];
+
+        System.arraycopy(array, left, leftArr, 0, mid - left + 1);
+        System.arraycopy(array, mid + 1, rightArr, 0, right - mid);
+
+        int i = 0;
+        int j = 0;
+        int k = left;
+
+        while (i < leftArr.length && j < rightArr.length) {
+            if (leftArr[i] <= rightArr[j]) {
+                array[k++] = leftArr[i++];
+            } else {
+                array[k++] = rightArr[j++];
+            }
+        }
+
+        while (i < leftArr.length) {
+            array[k++] = leftArr[i++];
+        }
+
+        while (j < rightArr.length) {
+            array[k++] = rightArr[j++];
+        }
+    }
+
+    /// Sorts a list of integers in ascending order using the QuickSort algorithm.
+    ///
+    /// Employs an in-place divide-and-conquer strategy by selecting a pivot element,
+    /// partitioning the remaining elements into sub-lists of values smaller than
+    /// and greater than the pivot, and recursively sorting the sub-lists.
+    ///
+    /// @param nums the `List` of integers to be sorted
+    /// @return the sorted `List` in ascending order, or the input list if it is `null` or empty
+    /// @implNote Time Complexity:
+    ///   - Best-case: `O(n log n)` when partitions are evenly balanced
+    ///   - Average-case: `O(n log n)`
+    ///   - Worst-case: `O(n²)` when the pivot selection leads to unbalanced partitions (e.g., already sorted input with a naive pivot choice)
+    ///
+    /// Space Complexity: `O(log n)` auxiliary space on average for the recursive call stack.
+    public static List<Integer> quickSortCustom(List<Integer> nums) {
+        if (nums == null || nums.isEmpty()) {
+            return new ArrayList<>();
+        }
+
+        int left = 0;
+        int right = nums.size() - 1;
+
+        quickSort(nums, left, right);
+        return nums;
+    }
+
+    private static void quickSort(List<Integer> nums, int left, int right) {
+        if (left < right) {
+            int pivot = quickSortPartition(nums, left, right);
+            quickSort(nums, left, pivot - 1);
+            quickSort(nums, pivot + 1, right);
+        }
+    }
+
+    private static int quickSortPartition(List<Integer> nums, int left, int right) {
+        int pivot = nums.get(right);
+
+        int i = left - 1;
+        for (int j = left; j < right; j++) {
+            if (nums.get(j) <= pivot) {
+                i++;
+
+                Collections.swap(nums, i, j);
+            }
+        }
+
+        Collections.swap(nums, i + 1, right);
+        return i + 1;
     }
 }
