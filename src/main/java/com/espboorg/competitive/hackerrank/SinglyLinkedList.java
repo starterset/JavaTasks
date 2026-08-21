@@ -1,7 +1,7 @@
-package com.espboorg.competitive.codesignal;
+package com.espboorg.competitive.hackerrank;
 
 public class SinglyLinkedList {
-    public static void main(String[] args) {
+    static void main() {
         ListNode<Integer> integerList = new ListNode<>(null);
         Integer[] input = {3, 1, 2, 3, 4, 5};
         integerList.addAll(input);

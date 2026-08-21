@@ -1,10 +1,10 @@
-package com.espboorg.competitive.codesignal;
+package com.espboorg.competitive.hackerrank;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ListNodeTest {
+class ListListNodeTest {
 
     @Test
     void testSetAndGetNext() {
